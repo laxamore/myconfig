@@ -8,7 +8,7 @@
 # restore wallpaper with nitrogen
 # exec nitrogen --restore
 # restore wallpaper with feh
-exec --no-startup-id feh --bg-max ~/.wallpaper/*
+exec --no-startup-id feh --bg-max ~/Pictures/Wallpapers/*
 
 # x11 event binding updating wallpaper whenever x11 changes occur
 exec --no-startup-id ~/.local/bin/xeventbind ~/.local/bin/update-wallpaper
@@ -40,10 +40,19 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet $
 
 # run xorg compositor
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
+
+# gnome polkit
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+# run blueman applet
+exec --no-startup-id /usr/bin/blueman-applet &
+
+# pasystray for PulseAudio
+# exec --no-startup-id pasystray &
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -202,15 +211,30 @@ mode "workspace" {
 
 bindsym $mod+m mode "workspace"
 
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-}
+#bar {
+#        status_command i3status --config ~/.config/i3status/i3status.conf
+#        position top
+#        font pango:DejaVu Sans Mono 14
+#        colors {
+#          background #425454
+#          statusline #FFFFFF
+#          separator  #666666
+#
+#          focused_workspace  #4C7899 #285577 #FFFFFF
+#          active_workspace   #333333 #222222 #FFFFFF
+#          inactive_workspace #333333 #222222 #888888
+#          urgent_workspace   #2F343A #900000 #FFFFFF
+#          binding_mode       #2F343A #900000 #FFFFFF
+#        }
+#}
 
 # window gaps / spacing
-gaps inner 15 
-gaps outer 15
+gaps inner 8
+gaps outer 8
 smart_gaps on
 smart_borders on
 
