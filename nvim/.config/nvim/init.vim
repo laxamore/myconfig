@@ -55,7 +55,9 @@ let g:prettier#autoformat_require_pragma = 0
 colorscheme gruvbox
 
 " Open fzf Files search
-map <C-p> :Files<CR>
+map <esc>p :Files<CR>
+" Open fzf Git Files search
+map <C-p> :GFiles<CR>
 " Yank shortcut
 map <C-y> y
 " Cut shortcut
