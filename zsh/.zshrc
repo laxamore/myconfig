@@ -8,7 +8,7 @@
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="af-magic"
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -94,4 +94,4 @@ export EDITOR='nvim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH=~/.npm-global/bin:~/go/bin:~/.local/bin:$PATH
+export PATH=~/.npm-global/bin:~/go/bin:~/.local/bin:~/.local/vscode/bin:$PATH

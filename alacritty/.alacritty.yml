@@ -15,7 +15,10 @@ font:
     family: monospace
     style: Bold Italic
 
-  size: 7
+  size: 10
 
 key_bindings:
   - { key: P,   mods: Control|Shift,    chars: "\x1bp" }
+
+env:
+  TERM: xterm-256color
