@@ -94,4 +94,14 @@ export EDITOR='nvim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+ditto() {
+  directory=$(dirname $2); mkdir -p $directory; cp "$1" "$2"; 
+}
+
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 export PATH=~/.npm-global/bin:~/go/bin:~/.local/bin:~/.local/vscode/bin:$PATH
+
+export HYBRIS_HOME_DIR=/home/laxa/.local/share/sap_hybris/CXCOMM210500P_0-70005661
+export ANT_HOME=${HYBRIS_HOME_DIR}/hybris/bin/platform/apache-ant
+export PATH=${PATH}:${ANT_HOME}/bin
+export INITIAL_ADMIN=admin
