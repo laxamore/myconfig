@@ -10,6 +10,9 @@
 ### Enabling the service
 
 ```bash
+# reloading daemon for changes
+systemctl --user daemon-reload
+
 # enable it and started after reboot
 systemctl --user enable replaceHereWithService
 
