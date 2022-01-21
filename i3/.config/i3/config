@@ -54,7 +54,6 @@ exec --no-startup-id /usr/bin/blueman-applet &
 # pasystray for PulseAudio
 # exec --no-startup-id pasystray &
 
-# Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
@@ -71,7 +70,9 @@ bindsym $mod+Shift+Return exec alacritty
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+p exec --no-startup-id dmenu_run
+# bindsym $mod+p exec --no-startup-id dmenu_run
+bindsym $mod+p exec rofi -show run theme $HOME/.config/rofi/config.rasi
+
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
