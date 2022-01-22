@@ -105,3 +105,10 @@ export HYBRIS_HOME_DIR=/home/laxa/.local/share/sap_hybris/CXCOMM210500P_0-700056
 export ANT_HOME=${HYBRIS_HOME_DIR}/hybris/bin/platform/apache-ant
 export PATH=${PATH}:${ANT_HOME}/bin
 export INITIAL_ADMIN=admin
+
+if  [[ "$TMUX_PANE" != '' && "$(tmux display-message -p  '#{pane_index}')" == '0' ]]; then
+  vim
+fi
+
+alias cwd="cd $HYBRIS_HOME_DIR"
+alias cdd="cd ~/Documents/repo/laxamore/dotfiles"

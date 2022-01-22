@@ -52,6 +52,16 @@ call plug#end()
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
 
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = "rg --hidden -g '!{node_modules/*,.git/*}' --column --line-number --no-heading --color=always --smart-case -- %s || true"
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang Rg call RipgrepFzf(<q-args>, <bang>0)
+
 colorscheme gruvbox
 
 " Open fzf Files search
@@ -64,6 +74,10 @@ map <C-y> y
 map <C-x> d
 " new tab shortcut
 map <C-n> :tabnew<CR>
+" split horizontal window
+map <C-s> :sp<CR>
+" split verticaly window
+map <C-w> :vs<CR>
 
 " Clear highlighting on escape in normal mode
 nnoremap <esc> :noh<return><esc>
@@ -127,7 +141,7 @@ lua <<EOF
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
   local nvim_lsp = require('lspconfig')
   
-  local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'golangci_lint_ls' }
+  local servers = { 'pyright', 'tsserver', 'golangci_lint_ls' }
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
       on_attach = on_attach,
