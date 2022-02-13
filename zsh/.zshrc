@@ -99,8 +99,8 @@ ditto() {
 }
 
 # doas aliases to sudo
-alias sudo="doas"
-alias sudoedit="doas nvim"
+#alias sudo="doas"
+#alias sudoedit="doas nvim"
 
 # vim asliases to nvim
 alias vim="nvim"
@@ -120,6 +120,19 @@ export INITIAL_ADMIN=admin
 alias cwd="cd $HYBRIS_HOME_DIR"
 alias cdd="cd ~/Documents/repo/laxamore/dotfiles"
 alias crd="cd ~/Documents/repo"
+
+# Aliases form SAP Commerce Developing
+alias aar="ant all && ./hybrisserver.sh -d"
+alias aa="ant all"
+alias aca="ant clean all"
+alias acar="ant clean all && ./hybrisserver.sh -d"
+alias antr="ant && ./hybrisserver.sh -d"
+
+# Aliases for docker rocm pytorch
+alias rcmpdock="docker start rocm3.5.1_pytorch > /dev/null && docker exec -it rocm3.5.1_pytorch bash"
+
+# Python Base Env
+source ~/.python_env/playground/bin/activate
 
 # Pywal color sync
 wal -i ~/Pictures/Wallpapers -q -t -e
