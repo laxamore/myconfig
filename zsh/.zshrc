@@ -123,3 +123,6 @@ alias crd="cd ~/Documents/repo"
 
 # Pywal color sync
 wal -i ~/Pictures/Wallpapers -q -t -e
+
+# Ripgrep search hidden by default
+alias rg="rg --hidden"

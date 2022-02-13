@@ -17,3 +17,7 @@ Arch Linux
 - stow
 - zsh
 - ohmyzsh
+
+## Fonts
+- ttf-font-awesome
+- nerd-fonts-complete
