@@ -98,6 +98,13 @@ ditto() {
   directory=$(dirname $2); mkdir -p $directory; cp "$1" "$2"; 
 }
 
+# doas aliases to sudo
+alias sudo="doas"
+alias sudoedit="doas nvim"
+
+# vim asliases to nvim
+alias vim="nvim"
+
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 export PATH=~/.npm-global/bin:~/go/bin:~/.local/bin:~/.local/vscode/bin:$PATH
 
@@ -106,9 +113,13 @@ export ANT_HOME=${HYBRIS_HOME_DIR}/hybris/bin/platform/apache-ant
 export PATH=${PATH}:${ANT_HOME}/bin
 export INITIAL_ADMIN=admin
 
-if  [[ "$TMUX_PANE" != '' && "$(tmux display-message -p  '#{pane_index}')" == '0' ]]; then
-  vim
-fi
+#if  [[ "$TMUX_PANE" != '' && "$(tmux display-message -p  '#{pane_index}')" == '0' ]]; then
+#  vim
+#fi
 
 alias cwd="cd $HYBRIS_HOME_DIR"
 alias cdd="cd ~/Documents/repo/laxamore/dotfiles"
+alias crd="cd ~/Documents/repo"
+
+# Pywal color sync
+wal -i ~/Pictures/Wallpapers -q -t -e

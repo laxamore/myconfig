@@ -40,7 +40,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet $
+# exec --no-startup-id nm-applet $
 
 # run xorg compositor
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
@@ -71,7 +71,8 @@ bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+p exec --no-startup-id dmenu_run
-bindsym $mod+p exec rofi -show run theme $HOME/.config/rofi/config.rasi
+# bindsym $mod+p exec rofi -show run theme $HOME/.config/rofi/config.rasi
+bindsym $mod+p exec $HOME/.config/polybar/scripts/launcher.sh
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -110,11 +111,11 @@ bindsym $mod+g split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+#bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+f layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -212,7 +213,7 @@ mode "workspace" {
 
 bindsym $mod+m mode "workspace"
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -227,7 +228,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #
 #          focused_workspace  #4C7899 #285577 #FFFFFF
 #          active_workspace   #333333 #222222 #FFFFFF
-#          inactive_workspace #333333 #222222 #888888
+#          inactive_workspace #333333 #222222 #888888^
 #          urgent_workspace   #2F343A #900000 #FFFFFF
 #          binding_mode       #2F343A #900000 #FFFFFF
 #        }
@@ -236,8 +237,11 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # window gaps / spacing
 gaps inner 8
 gaps outer 8
-smart_gaps on
+#smart_gaps on
 smart_borders on
 
 # disable window titlebars 
-for_window [class=".*"] border pixel 0
+for_window [class="^.*"] border pixel 0
+
+# Tricks to hide tabbed titlebars
+font pango:DejaVu Sans Mono 0
