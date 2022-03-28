@@ -10,6 +10,8 @@
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
+DISABLE_AUTO_UPDATE="true"
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -94,9 +96,9 @@ export EDITOR='nvim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-ditto() {
-  directory=$(dirname $2); mkdir -p $directory; cp "$1" "$2"; 
-}
+
+
+
 
 # doas aliases to sudo
 #alias sudo="doas"
@@ -108,10 +110,9 @@ alias vim="nvim"
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 export PATH=~/.npm-global/bin:~/go/bin:~/.local/bin:~/.local/vscode/bin:$PATH
 
-export HYBRIS_HOME_DIR=/home/laxa/.local/share/sap_hybris/CXCOMM210500P_0-70005661
+export HYBRIS_HOME_DIR=/home/laxa/.local/share/sap_hybris/CXCOMM201100P_8-70005693
 export ANT_HOME=${HYBRIS_HOME_DIR}/hybris/bin/platform/apache-ant
 export PATH=${PATH}:${ANT_HOME}/bin
-export INITIAL_ADMIN=admin
 
 #if  [[ "$TMUX_PANE" != '' && "$(tmux display-message -p  '#{pane_index}')" == '0' ]]; then
 #  vim
@@ -129,13 +130,13 @@ alias acar="ant clean all && ./hybrisserver.sh -d"
 alias antr="ant && ./hybrisserver.sh -d"
 
 # Aliases for docker rocm pytorch
-alias rcmpdock="docker start rocm3.5.1_pytorch > /dev/null && docker exec -it rocm3.5.1_pytorch bash"
+# alias rcmpdock="docker start rocm3.5.1_pytorch > /dev/null && docker exec -it rocm3.5.1_pytorch bash"
 
 # Python Base Env
 source ~/.python_env/playground/bin/activate
 
 # Pywal color sync
-wal -i ~/Pictures/Wallpapers -q -t -e
+# wal -i ~/Pictures/Wallpapers -q -t -e
 
 # Ripgrep search hidden by default
 alias rg="rg --hidden"

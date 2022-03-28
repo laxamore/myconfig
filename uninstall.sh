@@ -3,5 +3,9 @@
 dotfiles=$(ls -F | grep /)
 
 for folder in ${dotfiles[@]}; do
-	stow -D -t ~/ $folder
+  if [ $folder == "bin/" ]; then
+    stow -D -t ~/.local/bin/ $folder
+  else
+    stow -D -t ~/ $folder
+  fi
 done

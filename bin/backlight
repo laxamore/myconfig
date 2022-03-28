@@ -1,0 +1,13 @@
+#!/bin/bash
+
+val=$1
+
+if [[ $val -gt 100 ]]; then
+  val=100
+elif [[ $val -lt 0 ]]; then
+  val=0
+fi
+
+pwmVal=$(echo "($val*(25500/100)/100)" | bc)
+
+echo $pwmVal | sudo tee /sys/class/backlight/amdgpu_bl0/brightness
