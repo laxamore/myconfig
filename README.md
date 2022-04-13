@@ -7,8 +7,6 @@ Arch Linux
 - i3-gaps
 - rofi
 - polybar
-- dmenu
-- networkmanager-dmenu
 - alacritty
 - tmux
 - picom
