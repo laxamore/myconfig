@@ -112,7 +112,8 @@ export PATH=~/.npm-global/bin:~/go/bin:~/.local/bin:~/.local/vscode/bin:$PATH
 
 export HYBRIS_HOME_DIR=/home/laxa/.local/share/sap_hybris/CXCOMM201100P_8-70005693
 export ANT_HOME=${HYBRIS_HOME_DIR}/hybris/bin/platform/apache-ant
-export PATH=${PATH}:${ANT_HOME}/bin
+export PATH=${PATH}:${ANT_HOME}/bin:/home/laxa/Documents/repo/flutter/bin
+export CHROME_EXECUTABLE=chromium
 
 #if  [[ "$TMUX_PANE" != '' && "$(tmux display-message -p  '#{pane_index}')" == '0' ]]; then
 #  vim
@@ -140,3 +141,5 @@ source ~/.python_env/playground/bin/activate
 
 # Ripgrep search hidden by default
 alias rg="rg --hidden"
+
+source /usr/share/nvm/init-nvm.sh

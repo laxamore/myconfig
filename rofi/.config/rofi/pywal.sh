@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Color files
-PFILE="$HOME/.config/polybar/colors.ini"
-RFILE="$HOME/.config/polybar/scripts/rofi/colors.rasi"
+PFILE="$HOME/.config/rofi/colors.ini"
+RFILE="$HOME/.config/rofi/colors.rasi"
 
 # Get colors
 pywal_get() {

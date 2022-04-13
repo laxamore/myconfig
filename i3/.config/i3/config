@@ -13,6 +13,9 @@ exec --no-startup-id feh --bg-max ~/Pictures/Wallpapers/*
 # x11 event binding updating wallpaper whenever x11 changes occur
 exec --no-startup-id ~/.local/bin/xeventbind ~/.local/bin/update-wallpaper
 
+# refresh wallpaper
+bindsym $mod+w exec /home/laxa/.local/bin/update-wallpaper
+
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
@@ -71,8 +74,9 @@ bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+p exec --no-startup-id dmenu_run
-# bindsym $mod+p exec rofi -show run theme $HOME/.config/rofi/config.rasi
-bindsym $mod+p exec $HOME/.config/polybar/scripts/launcher.sh
+bindsym $mod+p exec $HOME/.config/rofi/launcher.sh
+#bindsym $mod+p exec rofi -show run theme $HOME/.config/rofi/config.rasi
+#bindsym $mod+p exec polybar -c $HOME/.config/polybar/config.ini &
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -128,7 +132,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # open file manager
-bindsym $mod+d exec pcmanfm
+bindsym $mod+d exec dolphin
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -213,7 +217,7 @@ mode "workspace" {
 
 bindsym $mod+m mode "workspace"
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh 
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
