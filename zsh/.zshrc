@@ -129,12 +129,13 @@ alias aa="ant all"
 alias aca="ant clean all"
 alias acar="ant clean all && ./hybrisserver.sh -d"
 alias antr="ant && ./hybrisserver.sh -d"
+alias fedbuild="~/Documents/repo/agit/dandelion/auto2000fedinstall.sh"
 
 # Aliases for docker rocm pytorch
 # alias rcmpdock="docker start rocm3.5.1_pytorch > /dev/null && docker exec -it rocm3.5.1_pytorch bash"
 
 # Python Base Env
-source ~/.python_env/playground/bin/activate
+# source ~/.python_env/playground/bin/activate
 
 # Pywal color sync
 # wal -i ~/Pictures/Wallpapers -q -t -e
@@ -143,3 +144,8 @@ source ~/.python_env/playground/bin/activate
 alias rg="rg --hidden"
 
 source /usr/share/nvm/init-nvm.sh
+
+export PYTHONPATH=$PYTHONPATH:/opt/ros/noetic/lib/python3.8/site-packages/:/opt/ros/noetic/lib/python3.9/site-packages/
+
+# ROS
+source /opt/ros/noetic/setup.zsh

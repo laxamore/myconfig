@@ -43,7 +43,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-# exec --no-startup-id nm-applet $
+exec --no-startup-id /usr/bin/nm-applet $
 
 # run xorg compositor
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
@@ -72,6 +72,9 @@ bindsym $mod+Shift+Return exec alacritty
 # kill focused window
 bindsym $mod+Shift+c kill
 
+# switch to last workspace
+bindsym $mod+grave workspace back_and_forth
+
 # start dmenu (a program launcher)
 # bindsym $mod+p exec --no-startup-id dmenu_run
 bindsym $mod+p exec $HOME/.config/rofi/launcher.sh
@@ -89,6 +92,8 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+bindsym $mod+Tab focus right
+bindsym $mod+Shift+Tab focus left
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -245,7 +250,7 @@ gaps outer 8
 smart_borders on
 
 # disable window titlebars 
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 4
 
 # Tricks to hide tabbed titlebars
 font pango:DejaVu Sans Mono 0
