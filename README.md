@@ -19,20 +19,23 @@ Arch Linux
 - picom
 
 ### Text Editor
-- nvim
+- neovim
+- vim
 
 ### Utility
 - stow
 - feh
 - pulseaudio
 - pulseaudio-alsa
+- arandr
+- htop
 
 ### File Manager
 - pcmanfm
 - imv
 - mpv
 - webp-pixbuf-loader
-- rclone
+- ffmpegthumbnailer
 
 ### Network
 - openvpn
@@ -48,10 +51,7 @@ Arch Linux
 - bluez
 - bluez-utils
 
-### Social
-- discord
-
 ## Fonts
 - ttf-font-awesome
+- noto-fonts
 - nerd-fonts-complete (AUR)
-
