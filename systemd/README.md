@@ -2,8 +2,6 @@
 
 ### List service
 
-- <strong>picom</strong>
-  <dt>custom compositor for kde plasma</dt>
 - <strong>rclone-gdrive</strong>
   <dt>for google drive mount</dt>
 
