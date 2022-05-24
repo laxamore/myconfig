@@ -1,4 +1,4 @@
-"Replace tab with space 
+"n Replace tab with space 
 set tabstop=2 
 set shiftwidth=2
 set expandtab
@@ -22,11 +22,21 @@ set clipboard=unnamedplus
 " Vim Plugin
 call plug#begin('~/.vim/plugged')
 " just colorscheme
-Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'    
+
+" nerdtree
+Plug 'preservim/nerdtree'  
+Plug 'jistr/vim-nerdtree-tabs'  
+
+" nerdcommenter
+Plug 'preservim/nerdcommenter'
 
 " fuzzy search plugin
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+"multiple cursor support
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " Code of Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -48,8 +58,16 @@ function! RipgrepFzf(query, fullscreen)
   let initial_command = printf(command_fmt, shellescape(a:query))
   let reload_command = printf(command_fmt, '{q}')
   let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  "call fzf#vim#grep(initial_command, 1,  a:fullscreen)
   call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
 endfunction
+
+let g:fzf_preview_window = ['down:50%', 'ctrl-/']
+
+"fzf GFiles without preview
+autocmd VimEnter * command! -bang -nargs=? GFiles call fzf#vim#gitfiles(<q-args>, {'options': '--no-preview'}, <bang>0)
+"fzf Files without preview
+autocmd VimEnter * command! -bang -nargs=? Files call fzf#vim#files(<q-args>, {'options': '--no-preview'}, <bang>0)
 
 command! -nargs=* -bang Rg call RipgrepFzf(<q-args>, <bang>0)
 
@@ -63,20 +81,32 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 map <esc>p :Files<CR>
 " Open fzf Git Files search
 map <C-p> :GFiles<CR>
+" Open fzf RipgrepFzf search
+map <C-g> :Rg<CR>
 " Yank shortcut
 map <C-y> y
 " Cut shortcut
 map <C-x> d
 " new tab shortcut
-map <C-n> :tabnew<CR>
-" split horizontal window
-map <C-s> :sp<CR>
-" split verticaly window
-map <C-w> :vs<CR>
+ map <C-t> :tabnew<CR>
+"" split horizontal window
+"map <C-s> :sp<CR>
+"" split verticaly window
+"map <C-w> :vs<CR>
+" nerdtree keymap
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTreeTabsToggle<CR>
+
+" multiplecursor key remap
+let g:VM_maps={}
+let g:VM_maps['Find Under']         = '<C-d>'            
+let g:VM_maps['Find Subword Under'] = '<C-d>'           
 
 " Clear highlighting on escape in normal mode
 nnoremap <esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[
+
+nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 
 " COC Config
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some

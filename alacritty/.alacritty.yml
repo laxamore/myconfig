@@ -29,6 +29,8 @@ key_bindings:
   - { key: Key8,   mods: Control,       chars: ""  }
   - { key: Key9,   mods: Control,       chars: ""  }
   - { key: Key0,   mods: Control,       chars: ""  }
+  - { key: Slash,   mods: Control,       chars: "\\c "  }
+  - { key: F,   mods: Control,       chars: "\x1b:Rg\n"  }
 
 env:
   TERM: xterm-256color
