@@ -1,6 +1,8 @@
 source $HOME/.config/nvim/plugin.vim
-source $HOME/.config/nvim/coc.vim
 source $HOME/.config/nvim/telescope.vim
+source $HOME/.config/nvim/lspconfig.vim
+source $HOME/.config/nvim/formatter.vim
+source $HOME/.config/nvim/treesitter.vim
 
 " Replace tab with space 
 set tabstop=2 
@@ -24,7 +26,8 @@ set relativenumber
 set clipboard=unnamedplus
 
 " Applying colorscheme
-colorscheme gruvbox
+colorscheme Monokai
+" colorscheme darkplus
 
 " Clear highlighting on escape in normal mode
 nnoremap <esc> :noh<return><esc>
