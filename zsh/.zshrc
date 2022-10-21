@@ -109,9 +109,11 @@ alias vim="nvim"
 
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 export PATH=~/.npm-global/bin:~/go/bin:~/.local/bin:~/.local/vscode/bin:$PATH
-
 export HYBRIS_HOME_DIR=/home/laxa/.local/share/sap_hybris/CXCOMM201100P_8-70005693
 export ANT_HOME=${HYBRIS_HOME_DIR}/hybris/bin/platform/apache-ant
+export JDTLS_HOME=${HOME}/.java/jdtls # Directory with the plugin and configs directories
+export WORKSPACE=${HOME}/.config/coc/extensions/coc-java-data/jdt_ws_5f54a6a4fe7649bb6a52262c052a8f88
+
 export PATH=${PATH}:${ANT_HOME}/bin:/home/laxa/Documents/repo/flutter/bin
 export CHROME_EXECUTABLE=chromium
 
@@ -122,6 +124,7 @@ export CHROME_EXECUTABLE=chromium
 alias cwd="cd $HYBRIS_HOME_DIR"
 alias cdd="cd ~/Documents/repo/laxamore/dotfiles"
 alias crd="cd ~/Documents/repo"
+alias cwrd="cd ~/Documents/repo/agit/dandelion"
 
 # Aliases form SAP Commerce Developing
 alias aar="ant all && ./hybrisserver.sh -d"
@@ -147,5 +150,5 @@ source /usr/share/nvm/init-nvm.sh
 
 export PYTHONPATH=$PYTHONPATH:/opt/ros/noetic/lib/python3.8/site-packages/:/opt/ros/noetic/lib/python3.9/site-packages/
 
-# ROS
-source /opt/ros/noetic/setup.zsh
+## ROS
+#source /opt/ros/noetic/setup.zsh

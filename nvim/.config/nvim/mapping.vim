@@ -1,5 +1,5 @@
 " Make Ctrl-c behave like esc
-map <C-c> <esc>
+nnoremap <C-c> <esc>
 " open telescope find_files
 map <C-p> :lua require('telescope.builtin').find_files({layout_strategy='vertical',layout_config={width=0.8}})<CR>
 " open teelscope git_files
