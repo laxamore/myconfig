@@ -1,0 +1,16 @@
+#!/bin/bash
+
+OBJECT="$1"
+OPERATION="$2"
+
+if [[ $OBJECT == "win11" ]]; then
+	case "$OPERATION" in
+        	"prepare")
+                /usr/bin/binding_vfio.sh 2>&1 | tee -a /var/log/libvirt/dual_gpu_passthrough.log
+                ;;
+
+          "release")
+                /usr/bin/binding_nvidia.sh 2>&1 | tee -a /var/log/libvirt/dual_gpu_passthrough.log
+                ;;
+	esac
+fi

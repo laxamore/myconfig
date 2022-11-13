@@ -1,0 +1,13 @@
+# with dual gpu passthrough restore nvidia gpu driver from vfio to nvidia driver
+# why not loading directly with nvidia driver instead
+# because xorg will use the second gpu then make the second 2 unable unload from the driver
+[Unit]
+Description=nvidia module binding
+
+[Service]
+Type=simple
+TimeoutStartSec=0
+ExecStart=/usr/bin/binding_nvidia.sh
+
+[Install]
+WantedBy=default.target

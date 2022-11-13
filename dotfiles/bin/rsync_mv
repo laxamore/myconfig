@@ -1,0 +1,16 @@
+#!/bin/bash
+
+src_dirs=()
+for src in ${@:1:$(($# -1))}; do
+  if [-z $(find $src -depth -type d) ]; then
+    echo > /dev/null
+  else
+    src_dirs+="$src"
+  fi
+done
+
+rsync -azvP --remove-source-files $@
+
+for src in $src_dirs; do
+  find $src -depth -type d -empty -delete
+done
