@@ -82,7 +82,7 @@ bindsym $mod+grave workspace back_and_forth
 
 # start dmenu (a program launcher)
 # bindsym $mod+p exec --no-startup-id dmenu_run
-bindsym $mod+p exec $HOME/.config/rofi/launcher.sh
+# bindsym $mod+p exec $HOME/.config/rofi/launcher.sh
 #bindsym $mod+p exec rofi -show run theme $HOME/.config/rofi/config.rasi
 #bindsym $mod+p exec polybar -c $HOME/.config/polybar/config.ini &
 
@@ -236,7 +236,8 @@ smart_gaps on
 smart_borders on
 
 # disable window titlebars 
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 3
+for_window [class="Ulauncher"] border pixel 0
 
 # Tricks to hide tabbed titlebars
 font pango:DejaVu Sans Mono 0
