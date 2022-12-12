@@ -11,8 +11,8 @@ require('general.mapping')
 require('colorscheme.darkplus')
 --require('colorscheme.monokai')
 
--- Language Serve & Completion Require
-require('lspconfig.setup')
+-- Language Serve & Completion & Snippets
+require('intellisense.setup')
 
 -- Fuzzy Finder
 require('telescope.setup')
@@ -31,4 +31,7 @@ require('copilot.setup')
 
 -- Vim Visual Multi
 require('vim-visual-multi.setup')
+
+-- Markdown Preview
+require('markdown-preview.setup')
 -- End External Plugins 

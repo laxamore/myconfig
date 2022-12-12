@@ -1,14 +1,12 @@
-require('lspconfig.plugin')
-require('lspconfig.mapping')
+require('intellisense.lspconfig.plugin')
+local on_attach = require('intellisense.lspconfig.mapping').on_attach
 
 local function setup()
-  -- Setup lspconfig.
   local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
   -- Use a loop to conveniently call 'setup' on multiple servers and
   -- map buffer local keybindings when the language server attaches
-  local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'gopls', 'vimls', 'sumneko_lua', 'bashls', 'ccls' }
-  for _, lsp in pairs(servers) do
+  for _, lsp in pairs(Servers) do
     require('lspconfig')[lsp].setup {
       on_attach = on_attach,
       flags = {
