@@ -1,4 +1,6 @@
-lua << EOF
+require('treesitter.plugin')
+
+local function setup()
   require'nvim-treesitter.configs'.setup {
     -- A list of parser names, or "all"
     ensure_installed = { "c", "lua", "rust", "go", "javascript", "java", "cpp", "json", "bash" },
@@ -26,4 +28,5 @@ lua << EOF
       additional_vim_regex_highlighting = false,
     },
   }
-EOF
+end
+pcall(setup)
