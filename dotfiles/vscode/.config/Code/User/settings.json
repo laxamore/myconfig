@@ -1,11 +1,91 @@
 {
-    "github.copilot.enable": {
-        "*": true,
-        "yaml": false,
-        "plaintext": false,
-        "markdown": true,
-        "python": false,
-        "cpp": true
+  // Golang
+  "go.lintOnSave": "package",
+  "go.formatTool": "goimports",
+  "go.formatTool.autoformat": true,
+  "go.testFlags": ["-v"],
+  "go.testOnSave": true,
+  "go.autocompleteUnimportedPackages": true,
+  "[go]": {
+    "editor.insertSpaces": false,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
     },
-    "editor.inlineSuggest.enabled": true
+    "editor.suggest.snippetsPreventQuickSuggestions": false
+  },
+  "gopls": {
+    "experimentalWorkspaceModule": true
+  },
+
+  // Editor
+  "editor.formatOnSave": true,
+  "editor.suggestSelection": "first",
+  "editor.minimap.enabled": false,
+  "editor.lineNumbers": "relative",
+  "editor.inlineSuggest.enabled": true,
+  // "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+
+  // Java
+  "maven.terminal.favorites": [
+    {
+      "alias": "clean package",
+      "command": "clean package",
+      "debug": false
+    }
+  ],
+  "redhat.telemetry.enabled": false,
+
+  // Github Copilot
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": true,
+    "python": true
+  },
+
+  // ML and Python
+  "jupyter.jupyterCommandLineArguments": ["--allow-root"],
+
+  // JSON
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // HTML
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // CSS
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // JS
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "svelte.enable-ts-plugin": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // VIM
+  "vim.handleKeys": {
+    "<C-d>": false,
+    "<C-b>": false,
+    "<C-f>": false
+  },
+  "vim.useSystemClipboard": true,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
