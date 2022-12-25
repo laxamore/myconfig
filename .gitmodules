@@ -1,3 +1,6 @@
 [submodule "dotfiles/ulauncher/.config/ulauncher/user-themes/SeaOwl-Ulauncher-theme"]
 	path = dotfiles/ulauncher/.config/ulauncher/user-themes/SeaOwl-Ulauncher-theme
 	url = https://github.com/Surendrajat/SeaOwl-Ulauncher-theme
+[submodule "dotfiles/nvim/.config/nvim/pack/github/start/copilot.vim"]
+	path = dotfiles/nvim/.config/nvim/pack/github/start/copilot.vim
+	url = https://github.com/github/copilot.vim.git
