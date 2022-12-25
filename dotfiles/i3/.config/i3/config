@@ -62,6 +62,18 @@ exec --no-startup-id /usr/bin/blueman-applet &
 # scream auido over LAN for virtual machine
 exec --no-startup-id scream -i virbr0
 
+# start Ulauncher
+exec --no-startup-id ulauncher
+
+# start nextcloud
+exec --no-startup-id nextcloud
+
+# kdeconnect indicator
+exec --no-startup-id kdeconnect-indicator
+
+# xclip
+exec --no-startup-id xclip
+
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
@@ -80,7 +92,7 @@ bindsym $mod+Shift+c kill
 # switch to last workspace
 bindsym $mod+grave workspace back_and_forth
 
-# start dmenu (a program launcher)
+# start program launcher
 # bindsym $mod+p exec --no-startup-id dmenu_run
 # bindsym $mod+p exec $HOME/.config/rofi/launcher.sh
 #bindsym $mod+p exec rofi -show run theme $HOME/.config/rofi/config.rasi
