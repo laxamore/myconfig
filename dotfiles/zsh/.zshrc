@@ -109,23 +109,6 @@ alias vim="nvim"
 
 # cp aliases to rsync
 alias cp="rsync -azvP"
-# mv aliases to rsync
-#rsync_mv () {
-#  src_dirs=()
-#  for src in ${@:1:$(($# -1))}; do
-#    if [ -z $(find $src -depth -type d) ]; then
-#    else
-#      src_dirs+="$src"
-#    fi
-#  done
-#
-#  rsync -azvP --remove-source-files $@
-#
-#  for src in $src_dirs; do
-#    find $src -depth -type d -empty -delete
-#  done
-#}
-alias mv="rsync_mv"
 
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 export PATH=~/.npm-global/bin:~/go/bin:~/.local/bin:~/.local/vscode/bin:$PATH
