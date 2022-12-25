@@ -6,7 +6,8 @@ Servers = {
   'vimls',          -- Vim
   'sumneko_lua',    -- Lua
   'bashls',         -- Bash
-  'clangd'         -- C/C++
+  'clangd',         -- C/C++
+  'cssls',          -- CSS
 }
 
 require('intellisense.cmp.setup')

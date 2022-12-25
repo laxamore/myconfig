@@ -6,6 +6,9 @@ local function map(m, k, v, opts)
   vim.api.nvim_set_keymap(m, k, v, options)
 end
 
+-- Set leader key to space
+vim.g.mapleader = ' '
+
 -- Remap Ctrl + c Behave like Esc
 map('n', '<C-c>', '<esc>')
 map('i', '<C-c>', '<esc>')

@@ -22,12 +22,13 @@ local function setup()
           --{ key = "u", action = "dir_up" },
         },
       },
+      hide_root_folder = true,
     },
     renderer = {
-      group_empty = true,
+      group_empty = false,
     },
     filters = {
-      dotfiles = true,
+      dotfiles = false,
     },
   })
 end

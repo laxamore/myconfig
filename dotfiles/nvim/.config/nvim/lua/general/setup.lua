@@ -25,3 +25,6 @@ vim.cmd("nnoremap <esc>^[ <esc>^[")
 
 -- Disable auto comment insertion
 vim.cmd("autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o")
+
+-- Set Scroll Off
+vim.cmd("set so=10")
