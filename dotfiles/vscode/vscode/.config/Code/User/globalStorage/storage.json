@@ -107,6 +107,20 @@
                                     "id": "vscode.menubar.separator"
                                 },
                                 {
+                                    "id": "openRecentFile",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/laxa/repo/laxamore/myconfig/dotfiles/vscode/vscode/.config/Code/User/settings.json",
+                                        "path": "/home/laxa/repo/laxamore/myconfig/dotfiles/vscode/vscode/.config/Code/User/settings.json",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/repo/laxamore/myconfig/dotfiles/vscode/vscode/.config/Code/User/settings.json"
+                                },
+                                {
+                                    "id": "vscode.menubar.separator"
+                                },
+                                {
                                     "id": "workbench.action.openRecent",
                                     "label": "&&More..."
                                 },
@@ -333,6 +347,22 @@
                     {
                         "id": "editor.action.clipboardCopyAction",
                         "label": "&&Copy"
+                    },
+                    {
+                        "id": "submenuitem.MenubarCopy",
+                        "label": "Copy As",
+                        "submenu": {
+                            "items": [
+                                {
+                                    "id": "gitlens.copyRemoteFileUrlToClipboard",
+                                    "label": "Copy Remote File URL"
+                                },
+                                {
+                                    "id": "gitlens.copyRemoteFileUrlFrom",
+                                    "label": "Copy Remote File URL From..."
+                                }
+                            ]
+                        }
                     },
                     {
                         "id": "editor.action.clipboardPasteAction",
@@ -574,7 +604,8 @@
                                 },
                                 {
                                     "id": "editor.action.toggleMinimap",
-                                    "label": "&&Minimap"
+                                    "label": "&&Minimap",
+                                    "checked": true
                                 },
                                 {
                                     "id": "breadcrumbs.toggle",
@@ -741,8 +772,7 @@
                 "items": [
                     {
                         "id": "workbench.action.navigateBack",
-                        "label": "&&Back",
-                        "enabled": false
+                        "label": "&&Back"
                     },
                     {
                         "id": "workbench.action.navigateForward",
@@ -751,8 +781,7 @@
                     },
                     {
                         "id": "workbench.action.navigateToLastEditLocation",
-                        "label": "&&Last Edit Location",
-                        "enabled": false
+                        "label": "&&Last Edit Location"
                     },
                     {
                         "id": "vscode.menubar.separator"
@@ -1661,7 +1690,7 @@
             "editorPartMinWidth": 220,
             "titleBarHeight": 0,
             "activityBarWidth": 48,
-            "sideBarWidth": 256,
+            "sideBarWidth": 801,
             "statusBarHeight": 22,
             "windowBorder": false
         }
