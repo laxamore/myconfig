@@ -1,4 +1,2 @@
-**/logs/*
-**/User/*
+**/vscode/*
 !**/User/settings.json
-**/Cache/*
