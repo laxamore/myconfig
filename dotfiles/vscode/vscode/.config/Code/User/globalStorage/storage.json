@@ -3,7 +3,9 @@
     "profileAssociations": {
         "workspaces": {
             "file:///home/laxa/.config/xfce4": "__default__profile__",
-            "file:///home/laxa/repo/laxamore/myconfig/dotfiles/xfce": "__default__profile__"
+            "file:///home/laxa/repo/laxamore/myconfig/dotfiles/xfce": "__default__profile__",
+            "file:///home/laxa/repo/laxamore/myconfig/dotfiles/vscode": "__default__profile__",
+            "file:///home/laxa/repo/laxamore/myconfig/dotfiles": "__default__profile__"
         },
         "emptyWindows": {}
     },
@@ -14,6 +16,12 @@
         "folders": [
             {
                 "folderUri": "file:///home/laxa/repo/laxamore/myconfig/dotfiles/xfce"
+            },
+            {
+                "folderUri": "file:///home/laxa/repo/laxamore/myconfig/dotfiles/vscode"
+            },
+            {
+                "folderUri": "file:///home/laxa/repo/laxamore/myconfig/dotfiles"
             }
         ],
         "emptyWindows": []
@@ -61,6 +69,28 @@
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/laxa/repo/laxamore/myconfig/dotfiles",
+                                        "path": "/home/laxa/repo/laxamore/myconfig/dotfiles",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/repo/laxamore/myconfig/dotfiles"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/laxa/repo/laxamore/myconfig/dotfiles/vscode",
+                                        "path": "/home/laxa/repo/laxamore/myconfig/dotfiles/vscode",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/repo/laxamore/myconfig/dotfiles/vscode"
                                 },
                                 {
                                     "id": "openRecentFolder",
@@ -303,22 +333,6 @@
                     {
                         "id": "editor.action.clipboardCopyAction",
                         "label": "&&Copy"
-                    },
-                    {
-                        "id": "submenuitem.MenubarCopy",
-                        "label": "Copy As",
-                        "submenu": {
-                            "items": [
-                                {
-                                    "id": "gitlens.copyRemoteFileUrlToClipboard",
-                                    "label": "Copy Remote File URL"
-                                },
-                                {
-                                    "id": "gitlens.copyRemoteFileUrlFrom",
-                                    "label": "Copy Remote File URL From..."
-                                }
-                            ]
-                        }
                     },
                     {
                         "id": "editor.action.clipboardPasteAction",
@@ -715,8 +729,7 @@
                     },
                     {
                         "id": "editor.action.toggleWordWrap",
-                        "label": "&&Word Wrap",
-                        "checked": true
+                        "label": "&&Word Wrap"
                     },
                     {
                         "id": "editor.action.toggleStickyScroll",
@@ -1648,15 +1661,15 @@
             "editorPartMinWidth": 220,
             "titleBarHeight": 0,
             "activityBarWidth": 48,
-            "sideBarWidth": 588,
+            "sideBarWidth": 256,
             "statusBarHeight": 22,
             "windowBorder": false
         }
     },
     "windowsState": {
         "lastActiveWindow": {
-            "folder": "file:///home/laxa/repo/laxamore/myconfig/dotfiles/xfce",
-            "backupPath": "/home/laxa/.config/Code/Backups/d062c7fb67c02644ef69ae0ef117b588",
+            "folder": "file:///home/laxa/repo/laxamore/myconfig/dotfiles",
+            "backupPath": "/home/laxa/.config/Code/Backups/687050063923ee46c752c9dbaf0fd3f0",
             "uiState": {
                 "mode": 0,
                 "x": 0,

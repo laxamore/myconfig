@@ -1,7 +1,0 @@
-2023-07-07 14:49:16.424 [info] Getting Manifest... eamodio.gitlens
-2023-07-07 14:49:16.438 [info] Installing extension: eamodio.gitlens
-2023-07-07 14:49:17.229 [warning] Extension signature verification failed with error 'UnknownError': eamodio.gitlens
-2023-07-07 14:49:17.438 [info] Extracted extension to /home/laxa/.vscode/extensions/.9af77d55-1822-4487-b569-86035bd57e6a: eamodio.gitlens
-2023-07-07 14:49:17.451 [info] Renamed to /home/laxa/.vscode/extensions/eamodio.gitlens-14.0.1
-2023-07-07 14:49:17.454 [info] Extracting extension completed. eamodio.gitlens
-2023-07-07 14:49:17.469 [info] Extension installed successfully: eamodio.gitlens
