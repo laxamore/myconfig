@@ -1,0 +1,112 @@
+{
+  // Golang
+  "go.lintOnSave": "package",
+  "go.formatTool": "goimports",
+  "go.formatTool.autoformat": true,
+  "go.testFlags": ["-v"],
+  "go.testOnSave": true,
+  "go.autocompleteUnimportedPackages": true,
+  "[go]": {
+    "editor.insertSpaces": false,
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+    "editor.suggest.snippetsPreventQuickSuggestions": false
+  },
+  "gopls": {
+    "experimentalWorkspaceModule": true
+  },
+
+  // Editor
+  "editor.formatOnSave": false,
+  "editor.suggestSelection": "first",
+  "editor.minimap.enabled": false,
+  "editor.lineNumbers": "relative",
+  "editor.inlineSuggest.enabled": true,
+  // "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+
+  // Java
+  "maven.terminal.favorites": [
+    {
+      "alias": "clean package",
+      "command": "clean package",
+      "debug": false
+    }
+  ],
+  "redhat.telemetry.enabled": false,
+
+  // Github Copilot
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false
+  },
+
+  // ML and Python
+  "jupyter.jupyterCommandLineArguments": ["--allow-root"],
+
+  // JSON
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // HTML
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // CSS
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // JS
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "svelte.enable-ts-plugin": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // VIM
+  "vim.handleKeys": {
+    "<C-d>": false,
+    "<C-b>": false,
+    "<C-f>": false
+  },
+  "vim.useSystemClipboard": true,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "devicetree.zephyr": "/home/laxa/.zephyros/zephyr",
+  "kconfig.zephyr.base": "/home/laxa/.zephyros/zephyr",
+  "kconfig.zephyr.west": "/usr/bin/west",
+  "devicetree.bindings": [
+
+    "${zephyrBase}/dts/bindings",
+    "${zephyrBase}/../nrf/dts/bindings"
+  ],
+  "nrf-connect.welcome.showOnStartup": false,
+  "nrf-connect.enableTelemetry": false,
+  "nrf-connect.toolchain.path": "${nrf-connect.toolchain:2.2.0}",
+  "nrf-connect.topdir": "/home/laxa/.zephyros",
+  "workbench.iconTheme": "material-icon-theme",
+  "cmake.configureOnOpen": true,
+  "EIDE.Repository.UseProxy": false,
+  "EIDE.ARM.GCC.InstallDirectory": "/usr",
+  "explorer.autoReveal": false,
+  "cortex-debug.gdbPath": "",
+  "editor.tabSize": 2,
+  "extensions.ignoreRecommendations": true,
+  "git.openRepositoryInParentFolders": "never",
+  "debug.allowBreakpointsEverywhere": true
+}

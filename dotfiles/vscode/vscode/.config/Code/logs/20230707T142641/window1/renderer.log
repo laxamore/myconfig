@@ -1,0 +1,4 @@
+2023-07-07 14:26:41.733 [error] Extension 'github.copilot' appears in product.json but enables LESS API proposals than the extension wants.
+package.json (LOSES): inlineCompletionsAdditions, terminalDataWriteEvent
+product.json (WINS): inlineCompletionsAdditions
+2023-07-07 14:26:44.356 [info] [perf] Render performance baseline is 23ms
