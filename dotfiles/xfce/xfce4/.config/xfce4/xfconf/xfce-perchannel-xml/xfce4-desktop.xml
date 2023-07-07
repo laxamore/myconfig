@@ -7,7 +7,7 @@
         <property name="workspace0" type="empty">
           <property name="color-style" type="int" value="0"/>
           <property name="image-style" type="int" value="5"/>
-          <property name="last-image" type="string" value="/home/laxa/Pictures/Wallpapers/RDT_20230416_1740502151387796173483129.jpg"/>
+          <property name="last-image" type="string" value="/home/laxa/Pictures/Wallpapers/20221018_123246.jpg"/>
         </property>
         <property name="workspace1" type="empty">
           <property name="color-style" type="int" value="0"/>
@@ -48,6 +48,26 @@
           <property name="color-style" type="int" value="0"/>
           <property name="image-style" type="int" value="5"/>
           <property name="last-image" type="string" value="/usr/share/backgrounds/xfce/xfce-shapes.svg"/>
+        </property>
+        <property name="workspace9" type="empty">
+          <property name="color-style" type="int" value="0"/>
+          <property name="image-style" type="int" value="5"/>
+          <property name="last-image" type="string" value="/home/laxa/Pictures/39/20221018_123246.jpg"/>
+        </property>
+        <property name="workspace10" type="empty">
+          <property name="color-style" type="int" value="0"/>
+          <property name="image-style" type="int" value="5"/>
+          <property name="last-image" type="string" value="/home/laxa/Pictures/39/20221018_123246.jpg"/>
+        </property>
+        <property name="workspace11" type="empty">
+          <property name="color-style" type="int" value="0"/>
+          <property name="image-style" type="int" value="5"/>
+          <property name="last-image" type="string" value="/home/laxa/Pictures/39/20221018_123246.jpg"/>
+        </property>
+        <property name="workspace12" type="empty">
+          <property name="color-style" type="int" value="0"/>
+          <property name="image-style" type="int" value="5"/>
+          <property name="last-image" type="string" value="/home/laxa/Pictures/39/20221018_123246.jpg"/>
         </property>
       </property>
       <property name="monitorHDMI-1" type="empty">
@@ -92,6 +112,26 @@
           <property name="last-image" type="string" value="/usr/share/backgrounds/xfce/xfce-shapes.svg"/>
         </property>
         <property name="workspace8" type="empty">
+          <property name="color-style" type="int" value="0"/>
+          <property name="image-style" type="int" value="5"/>
+          <property name="last-image" type="string" value="/usr/share/backgrounds/xfce/xfce-shapes.svg"/>
+        </property>
+        <property name="workspace9" type="empty">
+          <property name="color-style" type="int" value="0"/>
+          <property name="image-style" type="int" value="5"/>
+          <property name="last-image" type="string" value="/usr/share/backgrounds/xfce/xfce-shapes.svg"/>
+        </property>
+        <property name="workspace10" type="empty">
+          <property name="color-style" type="int" value="0"/>
+          <property name="image-style" type="int" value="5"/>
+          <property name="last-image" type="string" value="/usr/share/backgrounds/xfce/xfce-shapes.svg"/>
+        </property>
+        <property name="workspace11" type="empty">
+          <property name="color-style" type="int" value="0"/>
+          <property name="image-style" type="int" value="5"/>
+          <property name="last-image" type="string" value="/usr/share/backgrounds/xfce/xfce-shapes.svg"/>
+        </property>
+        <property name="workspace12" type="empty">
           <property name="color-style" type="int" value="0"/>
           <property name="image-style" type="int" value="5"/>
           <property name="last-image" type="string" value="/usr/share/backgrounds/xfce/xfce-shapes.svg"/>
