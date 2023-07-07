@@ -39,6 +39,7 @@
       <property name="override" type="bool" value="true"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;Return" type="string" value="exo-open --launch TerminalEmulator"/>
       <property name="&lt;Super&gt;p" type="string" value="bash -c &quot;$HOME/.config/rofi/launcher.sh&quot;"/>
+      <property name="&lt;Super&gt;r" type="string" value="bash -c &quot;killall xfconfd &amp;&amp; xfsettingsd --replace&quot;"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
