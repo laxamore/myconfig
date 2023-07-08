@@ -19,13 +19,13 @@ sudo systemctl enable lightdm.service
 #### LXQT and i3 Packages
 
 ```bash
-sudo pacman -S lxqt kvantum i3-wm picom polybar rofi breeze-icons
+sudo pacman -S lxqt kvantum i3-wm picom polybar rofi breeze-icons oxygen-icons xsettingsd
 ```
 
 #### Audio
 
 ```bash
-sudo pacman -S pipewire pipewire-pulse
+sudo pacman -S pipewire pipewire-pulse pamixer pavucontrol
 ```
 
 #### Network
@@ -45,15 +45,9 @@ sudo systemctl enable bluetooth.service
 #### Utilities
 
 ```bash
-sudo pacman -S xarchiver gvfs gvfs-mtp gvfs-gphoto2 gvfs-smb git wget curl htop neofetch xclip xsel feh gnome-keyring xorg-xkill pavucontrol webp-pixbuf-loader mpv ffmpegthumbnailer tumbler tmux neovim
+sudo pacman -S xarchiver gvfs gvfs-mtp gvfs-gphoto2 gvfs-smb git wget curl htop neofetch xclip xsel feh gnome-keyring xorg-xkill webp-pixbuf-loader mpv ffmpegthumbnailer tumbler tmux neovim kitty
 
 sudo ln -s /usr/bin/nvim /usr/bin/vim
-```
-
-#### Fonts
-
-```bash
-sudo pacman -S ttf-dejavu ttf-liberation noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 ```
 
 #### Office
@@ -84,4 +78,10 @@ makepkg -si
 ```bash
 paru -S zsh oh-my-zsh-git
 echo "exec zsh" >> ~/.bashrc
+```
+
+#### Fonts
+
+```bash
+paru -S ttf-dejavu ttf-liberation noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nerd-fonts-meta
 ```

@@ -186,7 +186,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+q restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+q exec i3-msg exit 
+bindsym $mod+Shift+q exec lxqt-leave 
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -230,13 +230,13 @@ bindsym $mod+m mode "workspace"
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # window gaps / spacing
-gaps inner 4
-gaps outer 4
-smart_gaps on
+gaps inner 8
+gaps outer 8
+#smart_gaps on
 smart_borders on
 
 # disable window titlebars 
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 4
 for_window [class="Steam"] floating enable
 
 # Tricks to hide tabbed titlebars
