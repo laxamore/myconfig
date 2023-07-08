@@ -24,6 +24,8 @@
   "editor.minimap.enabled": false,
   "editor.lineNumbers": "relative",
   "editor.inlineSuggest.enabled": true,
+  "editor.fastScrollSensitivity": 5,
+  "editor.mouseWheelScrollSensitivity": 3,
   // "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 
   // Java
