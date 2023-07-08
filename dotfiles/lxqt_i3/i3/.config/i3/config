@@ -244,3 +244,7 @@ for_window [class="Steam"] floating enable
 
 # Tricks to hide tabbed titlebars
 font pango:DejaVu Sans Mono 0
+
+# split toggle
+for_window [class="^.*"] split toggle
+bindsym $mod+t split toggle
