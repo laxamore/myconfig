@@ -45,7 +45,7 @@ sudo systemctl enable bluetooth.service
 #### Utilities
 
 ```bash
-sudo pacman -S xarchiver gvfs gvfs-mtp gvfs-gphoto2 gvfs-smb git wget curl htop neofetch xclip xsel feh gnome-keyring xorg-xkill webp-pixbuf-loader mpv ffmpegthumbnailer tumbler tmux neovim kitty rofi-calc
+sudo pacman -S xarchiver gvfs gvfs-mtp gvfs-gphoto2 gvfs-smb git wget curl htop neofetch xclip xsel feh gnome-keyring xorg-xkill webp-pixbuf-loader mpv ffmpegthumbnailer tumbler tmux neovim rofi-calc
 
 sudo ln -s /usr/bin/nvim /usr/bin/vim
 ```
