@@ -84,7 +84,10 @@ bindsym $mod+Shift+c kill
 bindsym $mod+grave workspace back_and_forth
 
 # start program launcher
-bindsym $mod+p exec $HOME/.config/rofi/launcher.sh
+bindsym $mod+p exec rofi -show drun -show-icons -theme ~/.config/rofi/arc-dark.rasi
+
+# calculator
+bindsym $mod+c exec rofi -show calc -modi calc -no-show-match -no-sort -kb-accept-entry Control+Return -kb-accept-custom Return -calc-command "echo -n '{result}' | xclip -sel clip" -theme ~/.config/rofi/arc-dark.rasi
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
