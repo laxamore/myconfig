@@ -19,7 +19,7 @@ sudo systemctl enable lightdm.service
 #### LXQT and i3 Packages
 
 ```bash
-sudo pacman -S lxqt kvantum i3-wm picom polybar rofi breeze-icons oxygen-icons xsettingsd
+sudo pacman -S lxqt kvantum i3-wm picom polybar rofi breeze-icons oxygen-icons xsettingsd i3lock
 ```
 
 #### Audio
@@ -45,7 +45,7 @@ sudo systemctl enable bluetooth.service
 #### Utilities
 
 ```bash
-sudo pacman -S xarchiver gvfs gvfs-mtp gvfs-gphoto2 gvfs-smb git wget curl htop neofetch xclip xsel feh gnome-keyring xorg-xkill webp-pixbuf-loader mpv ffmpegthumbnailer tumbler tmux neovim rofi-calc
+sudo pacman -S xarchiver gvfs gvfs-mtp gvfs-gphoto2 gvfs-smb git wget curl htop neofetch xclip xsel feh gnome-keyring xorg-xkill webp-pixbuf-loader mpv ffmpegthumbnailer tumbler tmux neovim rofi-calc imagemagick
 
 sudo ln -s /usr/bin/nvim /usr/bin/vim
 ```
