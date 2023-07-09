@@ -5,6 +5,7 @@ local default_app = require("default_app")
 
 local keys = {}
 
+-- Client keys bindings
 function keys:get_globalkeys(modkey)
   -- Switch focus
   local globalkeys = gears.table.join(
@@ -27,11 +28,8 @@ function keys:get_globalkeys(modkey)
     awful.key({ modkey, }, "j", function() awful.client.focus.global_bydirection("down") end,
       { description = "focus next client to the bottom", group = "client" }),
     awful.key({ modkey, }, "Down", function() awful.client.focus.global_bydirection("down") end,
-      { description = "focus next client to the bottom", group = "client" })
-  )
+      { description = "focus next client to the bottom", group = "client" }),
 
-  -- Swap clients
-  globalkeys = gears.table.join(globalkeys,
     -- Swap clients to the left
     awful.key({ modkey, "Shift" }, "h", function() awful.client.swap.global_bydirection("left") end,
       { description = "swap with client to the left", group = "client" }),
@@ -54,7 +52,7 @@ function keys:get_globalkeys(modkey)
       { description = "swap with client to the bottom", group = "client" })
   )
 
-  -- Switch screen focus
+  -- Screen keys bindings
   globalkeys = gears.table.join(globalkeys,
     -- Switch focus to the left screen
     awful.key({ modkey, }, "a", function() awful.screen.focus_bydirection("left") end,
@@ -70,26 +68,37 @@ function keys:get_globalkeys(modkey)
       { description = "focus to the bottom screen", group = "screen" })
   )
 
+  -- Tags / workspaces keys bindings
   globalkeys = gears.table.join(globalkeys,
     awful.key({ modkey, }, "Tab", awful.tag.viewnext,
       { description = "view next", group = "tag" }),
     awful.key({ modkey, "Shift" }, "Tab", awful.tag.viewprev,
-      { description = "view previous", group = "tag" }),
+      { description = "view previous", group = "tag" })
+  )
 
-    -- Standard program
+  -- Launcher keys bindings
+  globalkeys = gears.table.join(globalkeys,
+    -- Terminal
     awful.key({ modkey, "Shift" }, "Return", function() awful.spawn(default_app.terminal) end,
       { description = "open a terminal", group = "launcher" }),
-    awful.key({ modkey, }, "q", awesome.restart,
-      { description = "reload awesome", group = "awesome" }),
 
     -- Menubar
     awful.key({ modkey }, "p", function() awful.spawn(default_app.menubar) end,
       { description = "show the rofi menubar", group = "launcher" }),
 
     -- File manager
-    awful.key({ modkey }, "e", function() awful.spawn("pcmanfm-qt") end,
-      { description = "show the rofi menubar", group = "launcher" })
+    awful.key({ modkey }, "e", function() awful.spawn("thunar") end,
+      { description = "open file manager", group = "launcher" })
   )
+
+  -- System keys bindings
+  globalkeys = gears.table.join(globalkeys,
+    awful.key({ modkey, }, "q", awesome.restart,
+      { description = "reload awesome", group = "awesome" }),
+    awful.key({ modkey, "Shift" }, "q", awesome.quit,
+      { description = "quit awesome", group = "awesome" })
+  )
+
   -- Bind all key numbers to tags.
   -- Be careful: we use keycodes to make it work on any keyboard layout.
   -- This should map on the top row of your keyboard, usually 1 to 9.

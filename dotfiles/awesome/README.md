@@ -16,16 +16,16 @@ sudo sed -i 's/^#greeter-session=example-gtk-gnome$/greeter-session=lightdm-slic
 sudo systemctl enable lightdm.service
 ```
 
-#### LXQT and i3 Packages
+#### Awesome WM
 
 ```bash
-sudo pacman -S lxqt kvantum i3-wm picom polybar rofi breeze-icons oxygen-icons xsettingsd i3lock
+sudo pacman -S awesome picom rofi breeze-icons oxygen-icons i3lock
 ```
 
 #### Audio
 
 ```bash
-sudo pacman -S pipewire pipewire-pulse pamixer pavucontrol
+sudo pacman -S pipewire pipewire-pulse pamixer pavucontrol wireplumber
 ```
 
 #### Network
@@ -45,7 +45,7 @@ sudo systemctl enable bluetooth.service
 #### Utilities
 
 ```bash
-sudo pacman -S xarchiver gvfs gvfs-mtp gvfs-gphoto2 gvfs-smb git wget curl htop neofetch xclip xsel feh gnome-keyring xorg-xkill webp-pixbuf-loader mpv ffmpegthumbnailer tumbler tmux neovim rofi-calc imagemagick
+sudo pacman -S xarchiver gvfs gvfs-mtp gvfs-gphoto2 gvfs-smb git wget curl htop neofetch xclip xsel feh gnome-keyring xorg-xkill webp-pixbuf-loader mpv ffmpegthumbnailer tumbler tmux neovim rofi-calc imagemagick thunar
 
 sudo ln -s /usr/bin/nvim /usr/bin/vim
 ```

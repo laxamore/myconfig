@@ -6,6 +6,13 @@ local pipewire_widget = require("widgets.pipewire")
 
 local bar = {}
 
+local function centered_widget_layout(widget)
+  local layout = wibox.layout.align.vertical()
+  layout.expand = "none"
+  layout:set_middle(widget)
+  return layout
+end
+
 function bar:create_bar(s)
   local x_offset = 20
   local y_offset = 10
@@ -23,50 +30,70 @@ function bar:create_bar(s)
 
   -- offset bar y position
   s.mywibox.y = s.geometry.y + y_offset
+
+  -- set wibar opacity
+  s.mywibox.opacity = 0.7
 end
 
 function bar:setup_widgets(s)
   -- wibox setup
-  s.mywibox:setup {
-    layout = wibox.layout.align.horizontal,
-    expand = "none",
-    -- left widgets
-    {
-      layout = wibox.layout.fixed.horizontal,
-      spacing = 10,
-      {
-        widget = wibox.widget.textbox,
-        text = " "
-      },
-      awful.widget.taglist {
-        screen = s,
-        filter = awful.widget.taglist.filter.all,
-        buttons = awful.util.taglist_buttons,
-      },
-    },
-    -- middle widgets
-    {
-      layout = wibox.layout.fixed.horizontal
+  local container = wibox.container.background()
+  container.bg = "#000000"
 
-    },
-    -- right widgets
-    {
+  local container_layout = wibox.layout.align:horizontal()
+
+  local left_widgets = wibox.layout.fixed.horizontal()
+  local middle_widgets = wibox.layout.fixed.horizontal()
+  local right_widgets = wibox.layout.fixed.horizontal()
+
+  -- left widgets
+  left_widgets:set_spacing(10)
+  left_widgets:add(wibox.widget.textbox(" "))
+  left_widgets:add(awful.widget.taglist {
+    screen = s,
+    filter = awful.widget.taglist.filter.all,
+    buttons = awful.util.taglist_buttons,
+  })
+
+  -- middle widgets
+  middle_widgets:set_spacing(10)
+  middle_widgets:add(wibox.widget.textbox(" "))
+  middle_widgets:add(centered_widget_layout(
+    wibox.widget {
       layout = wibox.layout.fixed.horizontal,
-      spacing = 5,
-      pipewire_widget(),
       {
-        layout = wibox.layout.fixed.vertical,
-        {
-          widget = wibox.widget.textbox,
-          forced_height = 5,
+        widget = awful.widget.tasklist {
+          screen = s,
+          filter = awful.widget.tasklist.filter.focused,
+          style = {
+            bg_focus = "#000000",
+          },
         },
-        {
-          widget = wibox.widget.systray(),
-          forced_height = 21,
-        }
-      },
-    },
-  }
+        forced_height = 20,
+      }
+    }))
+
+  -- right widgets
+  right_widgets:set_spacing(10)
+  right_widgets:add(pipewire_widget())
+  right_widgets:add(wibox.widget.textbox(" "))
+  right_widgets:add(centered_widget_layout(
+    wibox.widget {
+      layout = wibox.layout.fixed.horizontal,
+      {
+        widget = wibox.widget.systray(),
+        forced_height = 20,
+      }
+    }
+  ))
+
+  container_layout:set_left(left_widgets)
+  container_layout:set_middle(middle_widgets)
+  container_layout:set_right(right_widgets)
+
+  container:set_widget(container_layout)
+
+  s.mywibox:set_widget(container)
 end
 
 return bar
