@@ -57,7 +57,7 @@ function keys:get_globalkeys(modkey)
       { description = "show the rofi menubar", group = "launcher" }),
 
     -- File manager
-    awful.key({ modkey }, "e", function() awful.spawn("thunar") end,
+    awful.key({ modkey }, "e", function() awful.spawn(default_app.file_manager) end,
       { description = "open file manager", group = "launcher" })
   )
 

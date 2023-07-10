@@ -9,7 +9,7 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 
-local autostart = require("autostart")
+local startup = require("startup")
 local keys = require("keys")
 local mouse = require("mouse")
 local screens = require("screens")
@@ -48,8 +48,8 @@ do
 end
 -- }}}
 
--- Autostart applications
-autostart:init()
+-- Startup commands
+startup:init()
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
@@ -84,6 +84,17 @@ awful.rules.rules = {
             screen = awful.screen.focused,
         }
     },
+    {
+        rule_any = {
+            instance = {
+                "DTA",  -- Firefox addon DownThemAll.
+            }
+        }
+    },
+    {
+        rule = { class = "Firefox" },
+        properties = { screen = 1, tag = "2" }
+    },
 }
 -- }}}
 
@@ -109,7 +120,7 @@ client.connect_signal("property::fullscreen", function(c)
     if c.floating and not c.fullscreen then
         c.above = true
         c.below = false
-    -- if client goes into tiled mode, set it to below any floating clients
+        -- if client goes into tiled mode, set it to below any floating clients
     elseif not c.floating and not c.fullscreen then
         c.above = false
         c.below = true

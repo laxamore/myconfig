@@ -4,7 +4,8 @@ local autostarts = {
   'picom --config ~/.config/picom/picom.conf',
   'nm-applet',
   'nextcloud --background',
-  'blueman-applet'
+  'blueman-applet',
+  'xset -dpms', -- disable DPMS (let LXQT handle all power management)
 }
 
 local autostart = {}
