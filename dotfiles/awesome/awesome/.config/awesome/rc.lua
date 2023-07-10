@@ -81,19 +81,38 @@ awful.rules.rules = {
             raise = true,
             keys = keys:get_clientkeys(modkey),
             buttons = mouse:get_clientbuttons(modkey),
-            screen = awful.screen.preferred,
+            screen = awful.screen.focused,
         }
     },
 }
 -- }}}
 
 -- {{{ Signals
--- Signal function to make all floating windows always on top
+-- Signal callback when a client goes floating or back to normal
 client.connect_signal("property::floating", function(c)
-    if c.floating then
-        c.ontop = true
-    else
-        c.ontop = false
+    if c.floating and not c.fullscreen then
+        c.above = true
+        c.below = false
+    elseif not c.floating and not c.fullscreen then
+        c.above = false
+        c.below = true
+    end
+end)
+
+-- Signal callback when a client goes fullscreen or back to normal
+client.connect_signal("property::fullscreen", function(c)
+    -- By default a fullscreen client is always on top if the other clients ontop state is not true
+    -- But somehow when client fullscreen ontop or below is set to true, it will not goes into fullscreen
+    -- So avoid by not setting ontop or below to true
+
+    -- if client goes back into floating mode, set it to above any tiled clients
+    if c.floating and not c.fullscreen then
+        c.above = true
+        c.below = false
+    -- if client goes into tiled mode, set it to below any floating clients
+    elseif not c.floating and not c.fullscreen then
+        c.above = false
+        c.below = true
     end
 end)
 
