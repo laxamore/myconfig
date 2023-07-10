@@ -5,51 +5,21 @@ local default_app = require("default_app")
 
 local keys = {}
 
--- Client keys bindings
 function keys:get_globalkeys(modkey)
-  -- Switch focus
+  -- Layout keys bindings
   local globalkeys = gears.table.join(
-  -- Switch focus to the left
-    awful.key({ modkey, }, "h", function() awful.client.focus.global_bydirection("left") end,
-      { description = "focus next client to the left", group = "client" }),
-    awful.key({ modkey, }, "Left", function() awful.client.focus.global_bydirection("left") end,
-      { description = "focus next client to the left", group = "client" }),
-    -- Switch focus to the right
-    awful.key({ modkey, }, "l", function() awful.client.focus.global_bydirection("right") end,
-      { description = "focus next client to the right", group = "client" }),
-    awful.key({ modkey, }, "Right", function() awful.client.focus.global_bydirection("right") end,
-      { description = "focus next client to the right", group = "client" }),
-    -- Switch focus to the top
-    awful.key({ modkey, }, "k", function() awful.client.focus.global_bydirection("up") end,
-      { description = "focus next client to the up", group = "client" }),
-    awful.key({ modkey, }, "Up", function() awful.client.focus.global_bydirection("up") end,
-      { description = "focus next client to the up", group = "client" }),
-    -- Switch focus to the bottom
-    awful.key({ modkey, }, "j", function() awful.client.focus.global_bydirection("down") end,
-      { description = "focus next client to the bottom", group = "client" }),
-    awful.key({ modkey, }, "Down", function() awful.client.focus.global_bydirection("down") end,
-      { description = "focus next client to the bottom", group = "client" }),
-
-    -- Swap clients to the left
-    awful.key({ modkey, "Shift" }, "h", function() awful.client.swap.global_bydirection("left") end,
-      { description = "swap with client to the left", group = "client" }),
-    awful.key({ modkey, "Shift" }, "Left", function() awful.client.swap.global_bydirection("left") end,
-      { description = "swap with client to the left", group = "client" }),
-    -- Swap clients to the right
-    awful.key({ modkey, "Shift" }, "l", function() awful.client.swap.global_bydirection("right") end,
-      { description = "swap with client to the right", group = "client" }),
-    awful.key({ modkey, "Shift" }, "Right", function() awful.client.swap.global_bydirection("right") end,
-      { description = "swap with client to the right", group = "client" }),
-    -- Swap clients to the top
-    awful.key({ modkey, "Shift" }, "k", function() awful.client.swap.global_bydirection("up") end,
-      { description = "swap with client to the top", group = "client" }),
-    awful.key({ modkey, "Shift" }, "Up", function() awful.client.swap.global_bydirection("up") end,
-      { description = "swap with client to the top", group = "client" }),
-    -- Swap clients to the bottom
-    awful.key({ modkey, "Shift" }, "j", function() awful.client.swap.global_bydirection("down") end,
-      { description = "swap with client to the bottom", group = "client" }),
-    awful.key({ modkey, "Shift" }, "Down", function() awful.client.swap.global_bydirection("down") end,
-      { description = "swap with client to the bottom", group = "client" })
+    -- Increase width factor
+    awful.key({ modkey, "Control" }, "l", function() awful.tag.incmwfact(0.05) end,
+      { description = "increase width factor", group = "layout" }),
+    -- Decrease width factor
+    awful.key({ modkey, "Control" }, "h", function() awful.tag.incmwfact(-0.05) end,
+      { description = "decrease width factor", group = "layout" }),
+    -- Increase height factor
+    awful.key({ modkey, "Control" }, "k", function() awful.client.incwfact(0.05) end,
+      { description = "increase height factor", group = "layout" }),
+    -- Decrease height factor
+    awful.key({ modkey, "Control" }, "j", function() awful.client.incwfact(-0.05) end,
+      { description = "decrease height factor", group = "layout" })
   )
 
   -- Screen keys bindings
@@ -163,7 +133,49 @@ function keys:get_clientkeys(modkey)
     awful.key({ modkey, "Shift" }, "c", function(c) c:kill() end,
       { description = "close", group = "client" }),
     awful.key({ modkey, "Shift" }, "space", awful.client.floating.toggle,
-      { description = "toggle floating", group = "client" })
+      { description = "toggle floating", group = "client" }),
+
+    -- Switch focus to the left
+    awful.key({ modkey, }, "h", function() awful.client.focus.global_bydirection("left") end,
+      { description = "focus next client to the left", group = "client" }),
+    awful.key({ modkey, }, "Left", function() awful.client.focus.global_bydirection("left") end,
+      { description = "focus next client to the left", group = "client" }),
+    -- Switch focus to the right
+    awful.key({ modkey, }, "l", function() awful.client.focus.global_bydirection("right") end,
+      { description = "focus next client to the right", group = "client" }),
+    awful.key({ modkey, }, "Right", function() awful.client.focus.global_bydirection("right") end,
+      { description = "focus next client to the right", group = "client" }),
+    -- Switch focus to the top
+    awful.key({ modkey, }, "k", function() awful.client.focus.global_bydirection("up") end,
+      { description = "focus next client to the up", group = "client" }),
+    awful.key({ modkey, }, "Up", function() awful.client.focus.global_bydirection("up") end,
+      { description = "focus next client to the up", group = "client" }),
+    -- Switch focus to the bottom
+    awful.key({ modkey, }, "j", function() awful.client.focus.global_bydirection("down") end,
+      { description = "focus next client to the bottom", group = "client" }),
+    awful.key({ modkey, }, "Down", function() awful.client.focus.global_bydirection("down") end,
+      { description = "focus next client to the bottom", group = "client" }),
+
+    -- Swap clients to the left
+    awful.key({ modkey, "Shift" }, "h", function() awful.client.swap.global_bydirection("left") end,
+      { description = "swap with client to the left", group = "client" }),
+    awful.key({ modkey, "Shift" }, "Left", function() awful.client.swap.global_bydirection("left") end,
+      { description = "swap with client to the left", group = "client" }),
+    -- Swap clients to the right
+    awful.key({ modkey, "Shift" }, "l", function() awful.client.swap.global_bydirection("right") end,
+      { description = "swap with client to the right", group = "client" }),
+    awful.key({ modkey, "Shift" }, "Right", function() awful.client.swap.global_bydirection("right") end,
+      { description = "swap with client to the right", group = "client" }),
+    -- Swap clients to the top
+    awful.key({ modkey, "Shift" }, "k", function() awful.client.swap.global_bydirection("up") end,
+      { description = "swap with client to the top", group = "client" }),
+    awful.key({ modkey, "Shift" }, "Up", function() awful.client.swap.global_bydirection("up") end,
+      { description = "swap with client to the top", group = "client" }),
+    -- Swap clients to the bottom
+    awful.key({ modkey, "Shift" }, "j", function() awful.client.swap.global_bydirection("down") end,
+      { description = "swap with client to the bottom", group = "client" }),
+    awful.key({ modkey, "Shift" }, "Down", function() awful.client.swap.global_bydirection("down") end,
+      { description = "swap with client to the bottom", group = "client" })
   )
 
   return clientkeys
