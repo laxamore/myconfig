@@ -52,7 +52,15 @@ function bar:setup_widgets(s)
   left_widgets:add(awful.widget.taglist {
     screen = s,
     filter = awful.widget.taglist.filter.all,
-    buttons = awful.util.taglist_buttons,
+    buttons = awful.button({}, 1, function(t) 
+      local idx = t.index
+      for _s in screen do 
+        local tag = _s.tags[idx]
+        if tag then
+          tag:view_only()
+        end
+      end
+    end),
   })
 
   -- middle widgets
@@ -64,10 +72,13 @@ function bar:setup_widgets(s)
       {
         widget = awful.widget.tasklist {
           screen = s,
-          filter = awful.widget.tasklist.filter.focused,
+          filter = awful.widget.tasklist.filter.currenttags,
           style = {
             bg_focus = "#000000",
           },
+          buttons = awful.button({}, 1, function(c)
+            c:emit_signal("request::activate", "tasklist", { raise = true })
+          end)
         },
         forced_height = 20,
       }
