@@ -87,7 +87,7 @@ awful.rules.rules = {
     {
         rule_any = {
             instance = {
-                "DTA",  -- Firefox addon DownThemAll.
+                "DTA", -- Firefox addon DownThemAll.
             }
         }
     },
@@ -127,11 +127,24 @@ client.connect_signal("property::fullscreen", function(c)
     end
 end)
 
+-- Prevent any client to be maximized
+client.connect_signal("property::maximized", function(c)
+    if c.maximized then
+        c.maximized = false
+    end
+end)
+
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function(c)
     -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
     -- if not awesome.startup then awful.client.setslave(c) end
+
+    -- prevent new clients to be maximized or fullscreen
+    c.maximized_horizontal = false
+    c.maximized_vertical   = false
+    c.maximized            = false
+    c.fullscreen           = false
 
     if c.floating and not c.fullscreen then
         c.above = true
