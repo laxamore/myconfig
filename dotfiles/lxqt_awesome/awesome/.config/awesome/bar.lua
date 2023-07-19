@@ -85,15 +85,25 @@ function bar:setup_widgets(s)
     }))
 
   -- right widgets
-  right_widgets:set_spacing(10)
-  right_widgets:add(pipewire_widget())
-  right_widgets:add(wibox.widget.textbox(" "))
+  right_widgets:set_spacing(1)
+  right_widgets:add(centered_widget_layout(
+    pipewire_widget()
+  ))
   right_widgets:add(centered_widget_layout(
     wibox.widget {
       layout = wibox.layout.fixed.horizontal,
       {
         widget = wibox.widget.systray(),
         forced_height = 20,
+      }
+    }
+  ))
+  right_widgets:add(centered_widget_layout(
+    wibox.widget {
+      layout = wibox.layout.fixed.horizontal,
+      {
+        widget = wibox.widget.textclock("%a %b %d %y - %H:%M:%S", 1),
+        forced_width = 150,
       }
     }
   ))

@@ -100,7 +100,11 @@ function keys:get_globalkeys(modkey)
 
     -- File manager
     awful.key({ modkey }, "e", function() awful.spawn(default_app.file_manager) end,
-      { description = "open file manager", group = "launcher" })
+      { description = "open file manager", group = "launcher" }),
+
+    -- Calculator
+    awful.key({ modkey }, "c", function() awful.spawn(default_app.calculator) end,
+      { description = "open rofi calculator", group = "launcher" })
   )
 
   -- System keys bindings

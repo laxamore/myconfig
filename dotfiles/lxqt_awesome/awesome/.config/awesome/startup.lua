@@ -5,7 +5,7 @@ local autostarts = {
   'nm-applet',
   'nextcloud --background',
   'blueman-applet',
-  'xset -dpms', -- disable DPMS (let LXQT handle all power management)
+  'xset s off -dpms', -- disable DPMS (let LXQT handle all power management)
 }
 
 local autostart = {}
