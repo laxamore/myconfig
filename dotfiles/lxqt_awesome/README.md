@@ -45,7 +45,7 @@ sudo systemctl enable bluetooth.service
 #### Utilities
 
 ```bash
-sudo pacman -S xarchiver gvfs gvfs-mtp gvfs-gphoto2 gvfs-smb git wget curl htop neofetch xclip xsel feh gnome-keyring xorg-xkill webp-pixbuf-loader mpv ffmpegthumbnailer tumbler tmux neovim rofi-calc imagemagick kitty
+sudo pacman -S xarchiver gvfs gvfs-mtp gvfs-gphoto2 gvfs-smb git wget curl htop neofetch xclip xsel feh gnome-keyring xorg-xkill webp-pixbuf-loader mpv ffmpegthumbnailer tmux neovim rofi-calc imagemagick kitty thunar thunar-archive-plugin tumbler 
 
 sudo ln -s /usr/bin/nvim /usr/bin/vim
 ```
@@ -84,4 +84,20 @@ echo "exec zsh" >> ~/.bashrc
 
 ```bash
 paru -S ttf-dejavu ttf-liberation noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nerd-fonts-meta
+```
+
+#### Keyboard Input
+
+```bash
+paru -S fcitx5-mozc fcitx5-gtk fcitx5-qt fcitx5-material-color fcitx5-configtool
+```
+
+```bash
+# Set environment variables
+sudo tee -a /etc/environment <<EOF
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+GLFW_IM_MODULE=ibus
+EOF
 ```

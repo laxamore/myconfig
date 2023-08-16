@@ -83,7 +83,9 @@
   "vim.handleKeys": {
     "<C-d>": false,
     "<C-b>": false,
-    "<C-f>": false
+    "<C-f>": false,
+    "<C-y>": false,
+    "<C-k>": false,
   },
   "vim.useSystemClipboard": true,
   "[json]": {
@@ -110,5 +112,9 @@
   "editor.tabSize": 2,
   "extensions.ignoreRecommendations": true,
   "git.openRepositoryInParentFolders": "never",
-  "debug.allowBreakpointsEverywhere": true
+  "debug.allowBreakpointsEverywhere": true,
+  "EIDE.Toolchain.AnyGcc.InstallDirectory": "/usr",
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "editor.largeFileOptimizations": false
 }
