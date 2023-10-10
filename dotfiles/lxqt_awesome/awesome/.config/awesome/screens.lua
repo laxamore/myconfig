@@ -22,7 +22,7 @@ function screens:init()
         set_wallpaper(s)
 
         -- Each screen has its own tag / workspace table.
-        awful.tag({ "1", "2", "3", "4", "5" }, s, awful.layout.layouts[1])
+        awful.tag({ "1", "2", "3", "4", "5", "6" }, s, awful.layout.layouts[1])
 
         -- Create the wibox / bar for each screen
         bar:create_bar(s)
