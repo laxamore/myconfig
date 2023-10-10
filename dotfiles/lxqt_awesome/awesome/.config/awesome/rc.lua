@@ -82,6 +82,11 @@ awful.rules.rules = {
             keys = keys:get_clientkeys(modkey),
             buttons = mouse:get_clientbuttons(modkey),
             screen = awful.screen.focused,
+            -- spawn client floating and size half of screen size (centered)
+            floating = true,
+            placement = awful.placement.centered,
+            width = function(c) return c.screen.geometry.width / 2 end,
+            height = function(c) return c.screen.geometry.height / 2 end,
         }
     },
     {
@@ -176,7 +181,7 @@ end)
 
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal("mouse::enter", function(c)
-    c:emit_signal("request::activate", "mouse_enter", { raise = false })
+    c:emit_signal("request::activate", "mouse_enter", { raise = true })
 end)
 -- }}}
 
