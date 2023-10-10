@@ -5,8 +5,8 @@ local naughty = require("naughty")
 local default_app = require("default_app")
 
 local keys = {}
-local last_view_tag = 2
-local current_tag = 1
+local last_view_tag = {}
+local current_tag = {}
 
 local function get_screen(s)
   return s and screen[s]
@@ -75,15 +75,19 @@ function keys:get_globalkeys(modkey)
   globalkeys = gears.table.join(globalkeys,
     -- Toggle last viewed tag
     awful.key({ modkey, }, "`", function()
-        for s in screen do
-          local tag = s.tags[last_view_tag]
+        -- toggle tag on focused screen
+        if last_view_tag[tostring(awful.screen.focused().index)] ~= nil then
+          local tag_number = last_view_tag[tostring(awful.screen.focused().index)]
+          local tag = awful.screen.focused().tags[tag_number]
+
+          -- local tag = awful.screen.focused().tags[last_view_tag]
           if tag then
             tag:view_only()
           end
+
+          last_view_tag[tostring(awful.screen.focused().index)] = current_tag[tostring(awful.screen.focused().index)]
+          current_tag[tostring(awful.screen.focused().index)] = tag_number
         end
-        local temp = last_view_tag
-        last_view_tag = current_tag
-        current_tag = temp
       end,
       { description = "toggle last view tag", group = "tag" })
   )
@@ -118,19 +122,24 @@ function keys:get_globalkeys(modkey)
   -- Bind all key numbers to tags.
   -- Be careful: we use keycodes to make it work on any keyboard layout.
   -- This should map on the top row of your keyboard, usually 1 to 9.
-  for i = 1, 5 do
+  for i = 1, 6 do
     globalkeys = gears.table.join(globalkeys,
       -- View tag.
       awful.key({ modkey }, "#" .. i + 9,
         function()
-          for s in screen do
-            local tag = s.tags[i]
-            if tag then
-              tag:view_only()
-            end
+          -- switch tag on focused screen
+          local tag = awful.screen.focused().tags[i]
+          if tag then
+            tag:view_only()
           end
-          last_view_tag = current_tag
-          current_tag = i
+
+          if current_tag[tostring(awful.screen.focused().index)] == nil then
+            last_view_tag[tostring(awful.screen.focused().index)] = 1
+          else
+            last_view_tag[tostring(awful.screen.focused().index)] = current_tag[tostring(awful.screen.focused().index)]
+          end
+
+          current_tag[tostring(awful.screen.focused().index)] = i
         end,
         { description = "view tag #" .. i, group = "tag" }),
       -- Move client to tag.

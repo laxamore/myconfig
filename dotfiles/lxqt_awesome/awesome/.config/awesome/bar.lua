@@ -54,11 +54,11 @@ function bar:setup_widgets(s)
     filter = awful.widget.taglist.filter.all,
     buttons = awful.button({}, 1, function(t) 
       local idx = t.index
-      for _s in screen do 
-        local tag = _s.tags[idx]
-        if tag then
-          tag:view_only()
-        end
+
+      -- switch tag on focused screen
+      local tag = awful.screen.focused().tags[idx]
+      if tag then
+        tag:view_only()
       end
     end),
   })
