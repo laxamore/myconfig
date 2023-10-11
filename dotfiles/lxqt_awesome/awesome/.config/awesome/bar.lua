@@ -77,7 +77,13 @@ function bar:setup_widgets(s)
             bg_focus = "#000000",
           },
           buttons = awful.button({}, 1, function(c)
-            c:emit_signal("request::activate", "tasklist", { raise = true })
+            -- if task is already focused minimized the task
+            if c == client.focus then
+              c.minimized = true
+            else
+              -- otherwise, focus the task
+              c:emit_signal("request::activate", "tasklist", { raise = true })
+            end
           end)
         },
         forced_height = 20,
