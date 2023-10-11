@@ -56,7 +56,9 @@ startup:init()
 beautiful.init(
     os.getenv("HOME") .. "/.config/awesome/theme.lua"
 )
---- Gap / spacing between windows
+--- Gap / spacing between systray icons
+beautiful.systray_icon_spacing = 5
+--- Gap / spacing between tile windows
 beautiful.useless_gap = 10
 
 -- Initialize screen
@@ -104,34 +106,6 @@ awful.rules.rules = {
 -- }}}
 
 -- {{{ Signals
--- Signal callback when a client goes floating or back to normal
-client.connect_signal("property::floating", function(c)
-    if c.floating and not c.fullscreen then
-        c.above = true
-        c.below = false
-    elseif not c.floating and not c.fullscreen then
-        c.above = false
-        c.below = true
-    end
-end)
-
--- Signal callback when a client goes fullscreen or back to normal
-client.connect_signal("property::fullscreen", function(c)
-    -- By default a fullscreen client is always on top if the other clients ontop state is not true
-    -- But somehow when client fullscreen ontop or below is set to true, it will not goes into fullscreen
-    -- So avoid by not setting ontop or below to true
-
-    -- if client goes back into floating mode, set it to above any tiled clients
-    if c.floating and not c.fullscreen then
-        c.above = true
-        c.below = false
-        -- if client goes into tiled mode, set it to below any floating clients
-    elseif not c.floating and not c.fullscreen then
-        c.above = false
-        c.below = true
-    end
-end)
-
 -- Prevent any client to be maximized
 client.connect_signal("property::maximized", function(c)
     if c.maximized then
@@ -144,17 +118,6 @@ client.connect_signal("manage", function(c)
     -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
     -- if not awesome.startup then awful.client.setslave(c) end
-
-    -- prevent new clients to be maximized or fullscreen
-    c.maximized_horizontal = false
-    c.maximized_vertical   = false
-    c.maximized            = false
-    c.fullscreen           = false
-
-    if c.floating and not c.fullscreen then
-        c.above = true
-        c.below = false
-    end
 
     if awesome.startup
         and not c.size_hints.user_position
@@ -177,11 +140,6 @@ client.connect_signal("focus", function(c)
 end)
 client.connect_signal("unfocus", function(c)
     c.border_color = beautiful.border_normal
-end)
-
--- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter", function(c)
-    c:emit_signal("request::activate", "mouse_enter", { raise = true })
 end)
 -- }}}
 
