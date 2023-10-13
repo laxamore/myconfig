@@ -4,3 +4,6 @@
 [submodule "dotfiles/nvim/.config/nvim/pack/github/start/copilot.vim"]
 	path = dotfiles/nvim/.config/nvim/pack/github/start/copilot.vim
 	url = https://github.com/github/copilot.vim.git
+[submodule "dotfiles/lxqt_awesome/awesome/.config/awesome/awesome-wm-widgets"]
+	path = dotfiles/lxqt_awesome/awesome/.config/awesome/awesome-wm-widgets
+	url = https://github.com/streetturtle/awesome-wm-widgets.git

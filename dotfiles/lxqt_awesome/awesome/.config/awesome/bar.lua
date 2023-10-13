@@ -1,6 +1,7 @@
 local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
+local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
 
 local pipewire_widget = require("widgets.pipewire")
 
@@ -91,7 +92,13 @@ function bar:setup_widgets(s)
     }))
 
   -- right widgets
-  right_widgets:set_spacing(1)
+  right_widgets:set_spacing(10)
+  right_widgets:add(centered_widget_layout(
+    wibox.widget {
+      layout = wibox.layout.fixed.horizontal,
+      battery_widget(),
+    }
+  ))
   right_widgets:add(centered_widget_layout(
     pipewire_widget()
   ))
