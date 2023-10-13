@@ -1,0 +1,2 @@
+require('intellisense.luasnip.plugin')
+
