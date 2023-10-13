@@ -1,4 +1,4 @@
-# XFCE Configuration
+# LXQT + Awesome WM Configuration
 
 ## Arch Linux
 
@@ -45,7 +45,7 @@ sudo systemctl enable bluetooth.service
 #### Utilities
 
 ```bash
-sudo pacman -S xarchiver gvfs gvfs-mtp gvfs-gphoto2 gvfs-smb git wget curl htop neofetch xclip xsel feh gnome-keyring xorg-xkill webp-pixbuf-loader mpv ffmpegthumbnailer tmux neovim rofi-calc imagemagick kitty thunar thunar-archive-plugin tumbler 
+sudo pacman -S xarchiver gvfs gvfs-mtp gvfs-gphoto2 gvfs-smb git wget curl htop neofetch xclip xsel feh gnome-keyring xorg-xkill webp-pixbuf-loader mpv ffmpegthumbnailer tmux neovim rofi-calc imagemagick kitty thunar thunar-archive-plugin tumbler go fd ripgrep
 
 sudo ln -s /usr/bin/nvim /usr/bin/vim
 ```
@@ -78,6 +78,13 @@ makepkg -si
 ```bash
 paru -S zsh oh-my-zsh-git
 echo "exec zsh" >> ~/.bashrc
+```
+
+#### NodeJS NVM
+
+```bash
+paru -S nvm
+nvm install --lts
 ```
 
 #### Fonts
