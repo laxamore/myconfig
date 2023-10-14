@@ -4,6 +4,8 @@ local naughty = require("naughty")
 
 local default_app = require("default_app")
 
+local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
+
 local keys = {}
 local last_view_tag = {}
 local current_tag = {}
@@ -155,6 +157,11 @@ function keys:get_globalkeys(modkey)
         { description = "move focused client to tag #" .. i, group = "tag" })
     )
   end
+
+  globalkeys = gears.table.join(globalkeys,
+      awful.key({ }, "XF86MonBrightnessUp", function () brightness_widget:inc() end, {description = "increase brightness", group = "custom"}),
+      awful.key({ }, "XF86MonBrightnessDown", function () brightness_widget:dec() end, {description = "decrease brightness", group = "custom"})
+  )
 
   return globalkeys
 end

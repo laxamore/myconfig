@@ -2,6 +2,8 @@ local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
 local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
+local pacman_widget = require('awesome-wm-widgets.pacman-widget.pacman')
 
 local pipewire_widget = require("widgets.pipewire")
 
@@ -92,11 +94,29 @@ function bar:setup_widgets(s)
     }))
 
   -- right widgets
-  right_widgets:set_spacing(10)
+  right_widgets:set_spacing(20)
   right_widgets:add(centered_widget_layout(
     wibox.widget {
       layout = wibox.layout.fixed.horizontal,
-      battery_widget(),
+      pacman_widget(),
+    }
+  ))
+  right_widgets:add(centered_widget_layout(
+    wibox.widget {
+      layout = wibox.layout.fixed.horizontal,
+      brightness_widget{
+        type = 'icon_and_text',
+        percentage = true,
+      },
+    }
+  ))
+  right_widgets:add(centered_widget_layout(
+    wibox.widget {
+      layout = wibox.layout.fixed.horizontal,
+      battery_widget({
+        show_current_level = true,
+        timeout = 1,
+      }),
     }
   ))
   right_widgets:add(centered_widget_layout(
@@ -106,8 +126,7 @@ function bar:setup_widgets(s)
     wibox.widget {
       layout = wibox.layout.fixed.horizontal,
       {
-        widget = wibox.widget.systray(),
-        forced_height = 20,
+        widget = wibox.widget.textclock("%a %b %d %y - %H:%M:%S", 1),
       }
     }
   ))
@@ -115,9 +134,9 @@ function bar:setup_widgets(s)
     wibox.widget {
       layout = wibox.layout.fixed.horizontal,
       {
-        widget = wibox.widget.textclock("%a %b %d %y - %H:%M:%S", 1),
-        forced_width = 150,
-      }
+        widget = wibox.widget.systray(),
+      },
+      forced_height = 20,
     }
   ))
 

@@ -15,7 +15,6 @@ local function new(args)
     {
       id = "textbox",
       widget = wibox.widget.textbox,
-      forced_width = 50,
     }
   }
 
