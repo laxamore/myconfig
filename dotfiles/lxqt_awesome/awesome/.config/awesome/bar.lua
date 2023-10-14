@@ -1,9 +1,20 @@
 local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
-local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
-local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
-local pacman_widget = require('awesome-wm-widgets.pacman-widget.pacman')
+
+local battery_widget = require("awesome-wm-widgets.batteryarc-widget.batteryarc") {
+  show_current_level = true,
+  timeout = 1,
+}
+
+local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness") {
+  type = 'icon_and_text',
+  percentage = true,
+}
+
+local pacman_widget = require('awesome-wm-widgets.pacman-widget.pacman') {
+  polkit_agent_path = '/usr/bin/lxqt-policykit-agent',
+}
 
 local pipewire_widget = require("widgets.pipewire")
 
@@ -98,25 +109,19 @@ function bar:setup_widgets(s)
   right_widgets:add(centered_widget_layout(
     wibox.widget {
       layout = wibox.layout.fixed.horizontal,
-      pacman_widget(),
+      pacman_widget,
     }
   ))
   right_widgets:add(centered_widget_layout(
     wibox.widget {
       layout = wibox.layout.fixed.horizontal,
-      brightness_widget{
-        type = 'icon_and_text',
-        percentage = true,
-      },
+      brightness_widget
     }
   ))
   right_widgets:add(centered_widget_layout(
     wibox.widget {
       layout = wibox.layout.fixed.horizontal,
-      battery_widget({
-        show_current_level = true,
-        timeout = 1,
-      }),
+      battery_widget
     }
   ))
   right_widgets:add(centered_widget_layout(
