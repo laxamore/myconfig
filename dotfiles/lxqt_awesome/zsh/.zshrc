@@ -111,14 +111,19 @@ alias vim="nvim"
 # alias cp="rsync -azvP"
 
 export PATH=~/.npm-global/bin:/usr/local/go/bin:~/go/bin:~/.local/bin:~/.local/vscode/bin:$PATH
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
-# export HYBRIS_HOME_DIR=/home/laxa/.local/share/sap_hybris/AUTO2000
-export HYBRIS_HOME_DIR=/home/laxa/.local/share/sap_hybris/MANGO
+# export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+# export JAVA_HOME=/usr/lib/jvm/jbr_dcevm-17
+export JAVA_HOME=/usr/lib/jvm/jbrsdk-17
+export HYBRIS_HOME_DIR=/home/laxa/.local/share/sap_hybris/AUTO2000
+# export HYBRIS_HOME_DIR=/home/laxa/.local/share/sap_hybris/MANGO
 export ANT_HOME=${HYBRIS_HOME_DIR}/hybris/bin/platform/apache-ant
 export JDTLS_HOME=${HOME}/.java/jdtls # Directory with the plugin and configs directories
 export WORKSPACE=${HOME}/.config/coc/extensions/coc-java-data/jdt_ws_5f54a6a4fe7649bb6a52262c052a8f88
 
 export PATH=${PATH}:${ANT_HOME}/bin:/home/laxa/Documents/repo/flutter/bin
+
+# Set Hybris environment
+source ${HYBRIS_HOME_DIR}/hybris/bin/platform/setantenv.sh
 
 alias cwd="cd $HYBRIS_HOME_DIR"
 alias cdd="cd ~/repo/laxamore/myconfig/dotfiles"
