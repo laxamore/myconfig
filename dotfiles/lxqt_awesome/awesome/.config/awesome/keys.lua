@@ -226,7 +226,23 @@ function keys:get_clientkeys(modkey)
     awful.key({ modkey, "Shift" }, "j", function() global_move_client_bydir("down") end,
       { description = "move client to the bottom", group = "client" }),
     awful.key({ modkey, "Shift" }, "Down", function() global_move_client_bydir("down") end,
-      { description = "move client to the bottom", group = "client" })
+      { description = "move client to the bottom", group = "client" }),
+
+    -- Move clients to screen 1
+    awful.key({ modkey, "Control" }, "1", function(c) c:move_to_screen(1) end,
+      { description = "move client to screen 1", group = "client" }),
+    -- Move clients to screen 2
+    awful.key({ modkey, "Control" }, "2", function(c) c:move_to_screen(2) end,
+      { description = "move client to screen 2", group = "client" }),
+    -- Move clients to screen 3
+    awful.key({ modkey, "Control" }, "3", function(c) c:move_to_screen(3) end,
+      { description = "move client to screen 3", group = "client" }),
+    -- Move clients to screen 4
+    awful.key({ modkey, "Control" }, "4", function(c) c:move_to_screen(4) end,
+      { description = "move client to screen 4", group = "client" }),
+    -- Move clients to screen 5
+    awful.key({ modkey, "Control" }, "5", function(c) c:move_to_screen(5) end,
+      { description = "move client to screen 5", group = "client" })
   )
 
   return clientkeys
