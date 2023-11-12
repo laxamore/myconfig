@@ -11,9 +11,6 @@ require('general.mapping')
 require('colorscheme.darkplus')
 --require('colorscheme.monokai')
 
--- Language Serve & Completion & Snippets
-require('intellisense.setup')
-
 -- Fuzzy Finder
 require('telescope.setup')
 
@@ -34,4 +31,9 @@ require('vim-visual-multi.setup')
 
 -- Markdown Preview
 require('markdown-preview.setup')
+
+-- Language Serve & Completion & Snippets
+require('intellisense.setup')
+
 -- End External Plugins 
+

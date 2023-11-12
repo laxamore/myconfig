@@ -1,4 +1,4 @@
-require('intellisense.lspconfig.plugin')
+-- require('intellisense.lspconfig.plugin')
 local on_attach = require('intellisense.lspconfig.mapping').on_attach
 
 local function setup()

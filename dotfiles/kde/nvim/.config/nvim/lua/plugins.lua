@@ -1,6 +1,6 @@
 local packer = require('packer')
 use = packer.use
 
-packer.startup(function() 
+packer.startup(function()
 	use 'wbthomason/packer.nvim'
 end)
