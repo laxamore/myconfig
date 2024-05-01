@@ -5,7 +5,8 @@
 #### Necessary Packages
 
 ```bash
-sudo pacman -S sudo base-devel
+sudo pacman -S sudo base-devel rustup go
+rustup default stable
 ```
 
 #### Display Server
@@ -84,4 +85,20 @@ echo "exec zsh" >> ~/.bashrc
 
 ```bash
 paru -S ttf-dejavu ttf-liberation noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nerd-fonts-meta
+```
+
+#### Keyboard Input
+
+```bash
+paru -S fcitx5-mozc fcitx5-gtk fcitx5-qt fcitx5-material-color fcitx5-configtool
+```
+
+```bash
+# Set environment variables
+sudo tee -a /etc/environment <<EOF
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+GLFW_IM_MODULE=ibus
+EOF
 ```
