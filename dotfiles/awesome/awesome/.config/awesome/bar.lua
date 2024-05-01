@@ -9,7 +9,9 @@ local battery_widget = require("awesome-wm-widgets.batteryarc-widget.batteryarc"
 
 local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness") {
   type = 'icon_and_text',
-  percentage = true,
+  percentage = false,
+  step = 1,
+  program = 'brightnessctl'
 }
 
 local pacman_widget = require('awesome-wm-widgets.pacman-widget.pacman') {
