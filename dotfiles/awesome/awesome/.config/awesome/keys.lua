@@ -1,14 +1,42 @@
 local awful = require("awful")
 local gears = require("gears")
+local naughty = require("naughty")
 
 local default_app = require("default_app")
 
+local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
+
 local keys = {}
+local last_view_tag = {}
+local current_tag = {}
+
+local function get_screen(s)
+  return s and screen[s]
+end
+
+local function global_move_client_bydir(dir, sel)
+  sel = sel or client.focus
+
+  if sel then
+    -- move focus
+    awful.client.focus.global_bydirection(dir)
+    local c = client.focus
+
+    -- move inside a screen
+    if get_screen(sel.screen) == get_screen(c.screen) and sel ~= c then
+      sel:swap(c)
+      client.focus = sel
+    else
+      sel:move_to_screen(awful.screen.focused())
+      client.focus = sel
+    end
+  end
+end
 
 function keys:get_globalkeys(modkey)
   -- Layout keys bindings
   local globalkeys = gears.table.join(
-    -- Increase width factor
+  -- Increase width factor
     awful.key({ modkey, "Control" }, "l", function() awful.tag.incmwfact(0.05) end,
       { description = "increase width factor", group = "layout" }),
     -- Decrease width factor
@@ -19,7 +47,14 @@ function keys:get_globalkeys(modkey)
       { description = "increase height factor", group = "layout" }),
     -- Decrease height factor
     awful.key({ modkey, "Control" }, "j", function() awful.client.incwfact(-0.05) end,
-      { description = "decrease height factor", group = "layout" })
+      { description = "decrease height factor", group = "layout" }),
+
+    -- Switch layout to maximized
+    awful.key({ modkey, "Shift" }, "f", function() awful.layout.set(awful.layout.suit.max) end,
+      { description = "set layout to maximized", group = "layout" }),
+    -- Switch layout to tiled
+    awful.key({ modkey, "Shift" }, "t", function() awful.layout.set(awful.layout.suit.tile) end,
+      { description = "set layout to tiled", group = "layout" })
   )
 
   -- Screen keys bindings
@@ -40,10 +75,23 @@ function keys:get_globalkeys(modkey)
 
   -- Tags / workspaces keys bindings
   globalkeys = gears.table.join(globalkeys,
-    awful.key({ modkey, }, "Tab", awful.tag.viewnext,
-      { description = "view next", group = "tag" }),
-    awful.key({ modkey, "Shift" }, "Tab", awful.tag.viewprev,
-      { description = "view previous", group = "tag" })
+    -- Toggle last viewed tag
+    awful.key({ modkey, }, "`", function()
+        -- toggle tag on focused screen
+        if last_view_tag[tostring(awful.screen.focused().index)] ~= nil then
+          local tag_number = last_view_tag[tostring(awful.screen.focused().index)]
+          local tag = awful.screen.focused().tags[tag_number]
+
+          -- local tag = awful.screen.focused().tags[last_view_tag]
+          if tag then
+            tag:view_only()
+          end
+
+          last_view_tag[tostring(awful.screen.focused().index)] = current_tag[tostring(awful.screen.focused().index)]
+          current_tag[tostring(awful.screen.focused().index)] = tag_number
+        end
+      end,
+      { description = "toggle last view tag", group = "tag" })
   )
 
   -- Launcher keys bindings
@@ -57,8 +105,12 @@ function keys:get_globalkeys(modkey)
       { description = "show the rofi menubar", group = "launcher" }),
 
     -- File manager
-    awful.key({ modkey }, "e", function() awful.spawn("thunar") end,
-      { description = "open file manager", group = "launcher" })
+    awful.key({ modkey }, "e", function() awful.spawn(default_app.file_manager) end,
+      { description = "open file manager", group = "launcher" }),
+
+    -- Calculator
+    awful.key({ modkey }, "c", function() awful.spawn(default_app.calculator) end,
+      { description = "open rofi calculator", group = "launcher" })
   )
 
   -- System keys bindings
@@ -72,28 +124,26 @@ function keys:get_globalkeys(modkey)
   -- Bind all key numbers to tags.
   -- Be careful: we use keycodes to make it work on any keyboard layout.
   -- This should map on the top row of your keyboard, usually 1 to 9.
-  for i = 1, 5 do
+  for i = 1, 6 do
     globalkeys = gears.table.join(globalkeys,
-      -- View tag only.
+      -- View tag.
       awful.key({ modkey }, "#" .. i + 9,
         function()
-          local screen = awful.screen.focused()
-          local tag = screen.tags[i]
+          -- switch tag on focused screen
+          local tag = awful.screen.focused().tags[i]
           if tag then
             tag:view_only()
           end
+
+          if current_tag[tostring(awful.screen.focused().index)] == nil then
+            last_view_tag[tostring(awful.screen.focused().index)] = 1
+          else
+            last_view_tag[tostring(awful.screen.focused().index)] = current_tag[tostring(awful.screen.focused().index)]
+          end
+
+          current_tag[tostring(awful.screen.focused().index)] = i
         end,
         { description = "view tag #" .. i, group = "tag" }),
-      -- Toggle tag display.
-      awful.key({ modkey, "Control" }, "#" .. i + 9,
-        function()
-          local screen = awful.screen.focused()
-          local tag = screen.tags[i]
-          if tag then
-            awful.tag.viewtoggle(tag)
-          end
-        end,
-        { description = "toggle tag #" .. i, group = "tag" }),
       -- Move client to tag.
       awful.key({ modkey, "Shift" }, "#" .. i + 9,
         function()
@@ -104,20 +154,14 @@ function keys:get_globalkeys(modkey)
             end
           end
         end,
-        { description = "move focused client to tag #" .. i, group = "tag" }),
-      -- Toggle tag on focused client.
-      awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
-        function()
-          if client.focus then
-            local tag = client.focus.screen.tags[i]
-            if tag then
-              client.focus:toggle_tag(tag)
-            end
-          end
-        end,
-        { description = "toggle focused client on tag #" .. i, group = "tag" })
+        { description = "move focused client to tag #" .. i, group = "tag" })
     )
   end
+
+  globalkeys = gears.table.join(globalkeys,
+      awful.key({ }, "XF86MonBrightnessUp", function () brightness_widget:inc() end, {description = "increase brightness", group = "custom"}),
+      awful.key({ }, "XF86MonBrightnessDown", function () brightness_widget:dec() end, {description = "decrease brightness", group = "custom"})
+  )
 
   return globalkeys
 end
@@ -156,26 +200,49 @@ function keys:get_clientkeys(modkey)
     awful.key({ modkey, }, "Down", function() awful.client.focus.global_bydirection("down") end,
       { description = "focus next client to the bottom", group = "client" }),
 
-    -- Swap clients to the left
-    awful.key({ modkey, "Shift" }, "h", function() awful.client.swap.global_bydirection("left") end,
-      { description = "swap with client to the left", group = "client" }),
-    awful.key({ modkey, "Shift" }, "Left", function() awful.client.swap.global_bydirection("left") end,
-      { description = "swap with client to the left", group = "client" }),
-    -- Swap clients to the right
-    awful.key({ modkey, "Shift" }, "l", function() awful.client.swap.global_bydirection("right") end,
-      { description = "swap with client to the right", group = "client" }),
-    awful.key({ modkey, "Shift" }, "Right", function() awful.client.swap.global_bydirection("right") end,
-      { description = "swap with client to the right", group = "client" }),
-    -- Swap clients to the top
-    awful.key({ modkey, "Shift" }, "k", function() awful.client.swap.global_bydirection("up") end,
-      { description = "swap with client to the top", group = "client" }),
-    awful.key({ modkey, "Shift" }, "Up", function() awful.client.swap.global_bydirection("up") end,
-      { description = "swap with client to the top", group = "client" }),
-    -- Swap clients to the bottom
-    awful.key({ modkey, "Shift" }, "j", function() awful.client.swap.global_bydirection("down") end,
-      { description = "swap with client to the bottom", group = "client" }),
-    awful.key({ modkey, "Shift" }, "Down", function() awful.client.swap.global_bydirection("down") end,
-      { description = "swap with client to the bottom", group = "client" })
+    -- Switch focus to next client
+    awful.key({ modkey, }, "Tab", function() awful.client.focus.byidx(1) end,
+      { description = "focus next client", group = "client" }),
+    -- Switch focus to previous client
+    awful.key({ modkey, "Shift" }, "Tab", function() awful.client.focus.byidx(-1) end,
+      { description = "focus previous client", group = "client" }),
+
+    -- Move clients to the left
+    awful.key({ modkey, "Shift" }, "h", function() global_move_client_bydir("left") end,
+      { description = "move client to the left", group = "client" }),
+    awful.key({ modkey, "Shift" }, "Left", function() global_move_client_bydir("left") end,
+      { description = "move client to the left", group = "client" }),
+    -- Move clients to the right
+    awful.key({ modkey, "Shift" }, "l", function(c) global_move_client_bydir("right") end,
+      { description = "move client to the right", group = "client" }),
+    awful.key({ modkey, "Shift" }, "Right", function() global_move_client_bydir("right") end,
+      { description = "move client to the right", group = "client" }),
+    -- Move clients to the top
+    awful.key({ modkey, "Shift" }, "k", function() global_move_client_bydir("up") end,
+      { description = "move client to the top", group = "client" }),
+    awful.key({ modkey, "Shift" }, "Up", function() global_move_client_bydir("up") end,
+      { description = "move client to the top", group = "client" }),
+    -- Move clients to the bottom
+    awful.key({ modkey, "Shift" }, "j", function() global_move_client_bydir("down") end,
+      { description = "move client to the bottom", group = "client" }),
+    awful.key({ modkey, "Shift" }, "Down", function() global_move_client_bydir("down") end,
+      { description = "move client to the bottom", group = "client" }),
+
+    -- Move clients to screen 1
+    awful.key({ modkey, "Control" }, "1", function(c) c:move_to_screen(1) end,
+      { description = "move client to screen 1", group = "client" }),
+    -- Move clients to screen 2
+    awful.key({ modkey, "Control" }, "2", function(c) c:move_to_screen(2) end,
+      { description = "move client to screen 2", group = "client" }),
+    -- Move clients to screen 3
+    awful.key({ modkey, "Control" }, "3", function(c) c:move_to_screen(3) end,
+      { description = "move client to screen 3", group = "client" }),
+    -- Move clients to screen 4
+    awful.key({ modkey, "Control" }, "4", function(c) c:move_to_screen(4) end,
+      { description = "move client to screen 4", group = "client" }),
+    -- Move clients to screen 5
+    awful.key({ modkey, "Control" }, "5", function(c) c:move_to_screen(5) end,
+      { description = "move client to screen 5", group = "client" })
   )
 
   return clientkeys

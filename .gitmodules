@@ -7,3 +7,6 @@
 [submodule "dotfiles/lxqt_awesome/awesome/.config/awesome/awesome-wm-widgets"]
 	path = dotfiles/lxqt_awesome/awesome/.config/awesome/awesome-wm-widgets
 	url = https://github.com/streetturtle/awesome-wm-widgets.git
+[submodule "dotfiles/awesome/awesome/.config/awesome/awesome-wm-widgets"]
+	path = dotfiles/awesome/awesome/.config/awesome/awesome-wm-widgets
+	url = https://github.com/streetturtle/awesome-wm-widgets.git

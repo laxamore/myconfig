@@ -9,7 +9,7 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 
-local autostart = require("autostart")
+local startup = require("startup")
 local keys = require("keys")
 local mouse = require("mouse")
 local screens = require("screens")
@@ -48,15 +48,17 @@ do
 end
 -- }}}
 
--- Autostart applications
-autostart:init()
+-- Startup commands
+startup:init()
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(
     os.getenv("HOME") .. "/.config/awesome/theme.lua"
 )
---- Gap / spacing between windows
+--- Gap / spacing between systray icons
+beautiful.systray_icon_spacing = 5
+--- Gap / spacing between tile windows
 beautiful.useless_gap = 10
 
 -- Initialize screen
@@ -82,39 +84,32 @@ awful.rules.rules = {
             keys = keys:get_clientkeys(modkey),
             buttons = mouse:get_clientbuttons(modkey),
             screen = awful.screen.focused,
+            -- spawn client floating and size half of screen size (centered)
+            floating = true,
+            placement = awful.placement.centered,
+            width = function(c) return c.screen.geometry.width / 2 end,
+            height = function(c) return c.screen.geometry.height / 2 end,
         }
     },
+    {
+        rule_any = {
+            instance = {
+                "DTA", -- Firefox addon DownThemAll.
+            }
+        }
+    },
+    {
+        rule = { class = "Firefox" },
+        properties = { screen = 1, tag = "2" }
+    },
 }
-
--- awful.screen.set_auto_dpi_enabled(true)
 -- }}}
 
 -- {{{ Signals
--- Signal callback when a client goes floating or back to normal
-client.connect_signal("property::floating", function(c)
-    if c.floating and not c.fullscreen then
-        c.above = true
-        c.below = false
-    elseif not c.floating and not c.fullscreen then
-        c.above = false
-        c.below = true
-    end
-end)
-
--- Signal callback when a client goes fullscreen or back to normal
-client.connect_signal("property::fullscreen", function(c)
-    -- By default a fullscreen client is always on top if the other clients ontop state is not true
-    -- But somehow when client fullscreen ontop or below is set to true, it will not goes into fullscreen
-    -- So avoid by not setting ontop or below to true
-
-    -- if client goes back into floating mode, set it to above any tiled clients
-    if c.floating and not c.fullscreen then
-        c.above = true
-        c.below = false
-    -- if client goes into tiled mode, set it to below any floating clients
-    elseif not c.floating and not c.fullscreen then
-        c.above = false
-        c.below = true
+-- Prevent any client to be maximized
+client.connect_signal("property::maximized", function(c)
+    if c.maximized then
+        c.maximized = false
     end
 end)
 
@@ -145,11 +140,6 @@ client.connect_signal("focus", function(c)
 end)
 client.connect_signal("unfocus", function(c)
     c.border_color = beautiful.border_normal
-end)
-
--- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter", function(c)
-    c:emit_signal("request::activate", "mouse_enter", { raise = false })
 end)
 -- }}}
 
