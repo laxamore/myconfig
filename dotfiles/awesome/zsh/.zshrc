@@ -140,7 +140,7 @@ alias fedbuild="~/Documents/repo/agit/dandelion/auto2000fedinstall.sh"
 alias rg="rg --hidden"
 
 export CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
-#source /usr/share/nvm/init-nvm.sh
+source /usr/share/nvm/init-nvm.sh
 
 # End of My RC
 

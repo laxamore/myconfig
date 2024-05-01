@@ -85,6 +85,8 @@ awful.rules.rules = {
         }
     },
 }
+
+-- awful.screen.set_auto_dpi_enabled(true)
 -- }}}
 
 -- {{{ Signals
