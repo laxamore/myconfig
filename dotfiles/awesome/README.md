@@ -46,7 +46,7 @@ sudo systemctl enable bluetooth.service
 #### Utilities
 
 ```bash
-sudo pacman -S xarchiver gvfs gvfs-mtp gvfs-gphoto2 gvfs-smb git wget curl htop neofetch xclip xsel feh gnome-keyring xorg-xkill webp-pixbuf-loader mpv ffmpegthumbnailer tumbler tmux neovim rofi-calc imagemagick thunar brightnessctl flameshot
+sudo pacman -S xarchiver gvfs gvfs-mtp gvfs-gphoto2 gvfs-smb git wget curl htop neofetch xclip xsel feh gnome-keyring xorg-xkill webp-pixbuf-loader mpv ffmpegthumbnailer tmux neovim rofi-calc imagemagick kitty thunar thunar-archive-plugin tumbler go fd ripgrep arc-icon-theme acpi rustup pacman-contrib brightnessctl
 
 sudo ln -s /usr/bin/nvim /usr/bin/vim
 ```
@@ -63,7 +63,7 @@ sudo pacman -S libreoffice-fresh libreoffice-fresh-id libreoffice-fresh-ja atril
 # Add multilib repository
 sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 sudo pacman -Syu
-sudo pacman -S wine winetricks
+sudo pacman -S wine-staging winetricks
 ```
 
 #### AUR Helper

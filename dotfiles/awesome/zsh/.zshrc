@@ -111,30 +111,30 @@ alias vim="nvim"
 # alias cp="rsync -azvP"
 
 export PATH=~/.npm-global/bin:/usr/local/go/bin:~/go/bin:~/.local/bin:~/.local/vscode/bin:$PATH
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
-export HYBRIS_HOME_DIR=/home/laxa/.local/share/sap_hybris/AUTO2000
-export ANT_HOME=${HYBRIS_HOME_DIR}/hybris/bin/platform/apache-ant
-export JDTLS_HOME=${HOME}/.java/jdtls # Directory with the plugin and configs directories
+#export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+#export HYBRIS_HOME_DIR=/home/laxa/.local/share/sap_hybris/AUTO2000
+#export ANT_HOME=${HYBRIS_HOME_DIR}/hybris/bin/platform/apache-ant
+#export JDTLS_HOME=${HOME}/.java/jdtls # Directory with the plugin and configs directories
 export WORKSPACE=${HOME}/.config/coc/extensions/coc-java-data/jdt_ws_5f54a6a4fe7649bb6a52262c052a8f88
 
 export PATH=${PATH}:${ANT_HOME}/bin:/home/laxa/Documents/repo/flutter/bin
 
-alias cwd="cd $HYBRIS_HOME_DIR"
+#alias cwd="cd $HYBRIS_HOME_DIR"
 alias cdd="cd ~/repo/laxamore/myconfig/dotfiles"
 alias crd="cd ~/repo"
-alias cwrd="cd ~/repo/agit/dandelion"
+alias cwrd="cd ~/repo/transtrack"
 
 # Aliases for SAP Commerce Dev
 
  
-alias aar="cd $HYBRIS_HOME_DIR/hybris/bin/platform && . ./setantenv.sh && ant all && ./hybrisserver.sh -d"
-alias aa="cd $HYBRIS_HOME_DIR/hybris/bin/platform && . ./setantenv.sh && ant all && cd -"
-alias aca="cd $HYBRIS_HOME_DIR/hybris/bin/platform && . ./setantenv.sh && ant clean all && cd -"
-alias acar="cd $HYBRIS_HOME_DIR/hybris/bin/platform && . ./setantenv.sh && ant clean all && ./hybrisserver.sh -d"
-alias ard="cd $HYBRIS_HOME_DIR/hybris/bin/platform && . ./setantenv.sh && ant && ./hybrisserver.sh -d"
-alias hrd="cd $HYBRIS_HOME_DIR/hybris/bin/platform && . ./setantenv.sh && ./hybrisserver.sh -d"
-alias thrd="tmux new-session -A -s hybris \"cd $HYBRIS_HOME_DIR/hybris/bin/platform && . ./setantenv.sh && ./hybrisserver.sh -d\""
-alias fedbuild="~/Documents/repo/agit/dandelion/auto2000fedinstall.sh"
+#alias aar="cd $HYBRIS_HOME_DIR/hybris/bin/platform && . ./setantenv.sh && ant all && ./hybrisserver.sh -d"
+#alias aa="cd $HYBRIS_HOME_DIR/hybris/bin/platform && . ./setantenv.sh && ant all && cd -"
+#alias aca="cd $HYBRIS_HOME_DIR/hybris/bin/platform && . ./setantenv.sh && ant clean all && cd -"
+#alias acar="cd $HYBRIS_HOME_DIR/hybris/bin/platform && . ./setantenv.sh && ant clean all && ./hybrisserver.sh -d"
+#alias ard="cd $HYBRIS_HOME_DIR/hybris/bin/platform && . ./setantenv.sh && ant && ./hybrisserver.sh -d"
+#alias hrd="cd $HYBRIS_HOME_DIR/hybris/bin/platform && . ./setantenv.sh && ./hybrisserver.sh -d"
+#alias thrd="tmux new-session -A -s hybris \"cd $HYBRIS_HOME_DIR/hybris/bin/platform && . ./setantenv.sh && ./hybrisserver.sh -d\""
+#alias fedbuild="~/Documents/repo/agit/dandelion/auto2000fedinstall.sh"
 
 # Ripgrep search hidden by default
 alias rg="rg --hidden"

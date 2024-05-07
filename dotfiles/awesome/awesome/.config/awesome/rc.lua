@@ -85,7 +85,7 @@ awful.rules.rules = {
             buttons = mouse:get_clientbuttons(modkey),
             screen = awful.screen.focused,
             -- spawn client floating and size half of screen size (centered)
-            floating = false,
+            floating = true,
             placement = awful.placement.centered,
             width = function(c) return c.screen.geometry.width / 2 end,
             height = function(c) return c.screen.geometry.height / 2 end,

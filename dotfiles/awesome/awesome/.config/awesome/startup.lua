@@ -7,7 +7,7 @@ local autostarts = {
   'blueman-applet',
   'xset s off -dpms', -- disable DPMS (let LXQT handle all power management)
   'flameshot',
-  'fctix5',
+  'fcitx5',
 }
 
 local autostart = {}
