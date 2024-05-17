@@ -181,3 +181,6 @@ export F4PGA_PACKAGES="install-xc7 xc7a50t_test xc7a100t_test xc7a200t_test xc7z
 alias enable_f4pga="source $F4PGA_INSTALL_DIR/$FPGA_FAM/conda/etc/profile.d/conda.sh; conda activate $FPGA_FAM"
 
 clear
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"

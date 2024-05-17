@@ -11,6 +11,5 @@ Servers = {
 }
 
 require('intellisense.cmp.setup')
-require('intellisense.luasnip.setup')
 require('intellisense.mason.setup')
 require('intellisense.lspconfig.setup')

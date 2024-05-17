@@ -1,30 +1,26 @@
-require('nvim-tree.plugin')
 require('nvim-tree.mapping')
 
-local function setup()
-  -- disable netrw at the very start of your init.lua (strongly advised)
-  vim.g.loaded_netrw = 1
-  vim.g.loaded_netrwPlugin = 1
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
-  -- set termguicolors to enable highlight groups
-  vim.opt.termguicolors = true
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
 
-  -- empty setup using defaults
-  require("nvim-tree").setup()
+-- empty setup using defaults
+require("nvim-tree").setup()
 
-  -- OR setup with some options
-  require("nvim-tree").setup({
-    sort_by = "case_sensitive",
-    view = {
-      adaptive_size = true,
-    },
-    renderer = {
-      group_empty = false,
-      root_folder_label = false,
-    },
-    filters = {
-      dotfiles = false,
-    },
-  })
-end
-pcall(setup)
+-- OR setup with some options
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  view = {
+    adaptive_size = true,
+  },
+  renderer = {
+    group_empty = false,
+    root_folder_label = false,
+  },
+  filters = {
+    dotfiles = false,
+  },
+})

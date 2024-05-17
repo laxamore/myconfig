@@ -1,4 +1,4 @@
-# XFCE Configuration
+# Arch Linux with Awesome WM
 
 ## Arch Linux
 
@@ -46,15 +46,34 @@ sudo systemctl enable bluetooth.service
 #### Utilities
 
 ```bash
-sudo pacman -S xarchiver gvfs gvfs-mtp gvfs-gphoto2 gvfs-smb git wget curl htop neofetch xclip xsel feh gnome-keyring xorg-xkill webp-pixbuf-loader mpv ffmpegthumbnailer tmux neovim rofi-calc imagemagick kitty thunar thunar-archive-plugin tumbler go fd ripgrep arc-icon-theme acpi rustup pacman-contrib brightnessctl
+sudo pacman -S xarchiver gvfs gvfs-mtp gvfs-gphoto2 gvfs-smb git wget curl htop neofetch xclip xsel feh gnome-keyring xorg-xkill webp-pixbuf-loader mpv ffmpegthumbnailer tmux neovim rofi-calc imagemagick kitty thunar thunar-archive-plugin tumbler go fd ripgrep arc-icon-theme rustup pacman-contrib flameshot xterm arandr nvm pyenv python-virtualenv ristretto stow
 
 sudo ln -s /usr/bin/nvim /usr/bin/vim
+```
+
+##### Laptop Only
+
+```bash
+sudo pacman -S brightnessctl acpi 
+```
+
+#### GPU Drivers
+
+##### NVIDIA
+
+```bash
+sudo pacman -S nvidia nvtop
 ```
 
 #### Office
 
 ```bash
 sudo pacman -S libreoffice-fresh libreoffice-fresh-id libreoffice-fresh-ja atril
+```
+#### Multimedia
+
+```bash
+sudo pacman -S krita gimp blender ardour yabridge yabridgectl
 ```
 
 #### WINE
@@ -73,6 +92,22 @@ git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
 ```
+#### Programming
+
+```bash
+paru -S jdk8-openjdk jdk11-openjdk jdk17-openjdk
+sudo archlinux-java set java-8-openjdk
+
+paru -S visual-studio-code-bin dbeaver stm32cubemx stm32cubeprog docker dotnet-runtime-6.0
+
+usermod -aG docker laxa
+```
+
+#### Engineering
+
+```bash
+pacman -S kicad kicad-library kicad-library-3d
+```
 
 #### Shell
 
@@ -84,7 +119,7 @@ echo "exec zsh" >> ~/.bashrc
 #### Fonts
 
 ```bash
-paru -S ttf-dejavu ttf-liberation noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nerd-fonts-meta
+paru -S ttf-dejavu ttf-liberation noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nerd-fonts
 ```
 
 #### Keyboard Input
