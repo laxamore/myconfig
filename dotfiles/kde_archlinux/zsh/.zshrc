@@ -186,3 +186,4 @@ alias vim="nvim"
 #eval "$(pyenv init -)"
 . "$HOME/.cargo/env"
 source /usr/share/nvm/init-nvm.sh
+. "$HOME/export-esp.sh"

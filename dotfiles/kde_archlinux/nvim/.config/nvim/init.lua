@@ -108,6 +108,9 @@ require('lazy').setup({
     end,
     app = 'brave',
   },
+
+  -- Copilot
+  'github/copilot.vim',
 })
 -- End External Plugins Install }}
 

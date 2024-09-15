@@ -57,6 +57,10 @@ fd
 ripgrep
 lazygit
 wl-clipboard
+espflash
+net-tools
+musescore
+usbutils
 
 [multilib]
 yabridge
@@ -71,6 +75,10 @@ oh-my-zsh-git
 postman-bin
 nvm
 arduino-ide-bin
+redisinsight-bin
+
+[manual aur]
+stm32cubeprog
 
 [fonts]
 ttf-dejavu
