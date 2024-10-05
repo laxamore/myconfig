@@ -61,6 +61,18 @@ espflash
 net-tools
 musescore
 usbutils
+krita
+blender
+htop
+btop
+git
+rustup
+virtualbox
+arm-none-eabi-gcc
+arm-none-eabi-newlib
+arm-none-eabi-gdb
+cmake
+tcpdump
 
 [multilib]
 yabridge
@@ -70,12 +82,13 @@ yabridgectl
 brave-bin
 visual-studio-code-bin
 stm32cubemx
-stm32cubeprog
 oh-my-zsh-git
 postman-bin
 nvm
 arduino-ide-bin
 redisinsight-bin
+zoom
+bambustudio-bin
 
 [manual aur]
 stm32cubeprog
